@@ -1,0 +1,38 @@
+<h1>User#index</h1>
+<p>Find me in app/views/user/index.html.erb</p>
+
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+
+<%= form_for(@user) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    
+    <%= f.label :age %>
+    <%= f.text_field :age %>
+    
+    <%= f.label :sex %>
+    <%= f.text_field :sex %>
+    
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+    
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+    
+    <%= f.label :password_confirmation, "Confirmation" %>
+    <%= f.password_field :password_confirmation %>
+
+    <%= f.collection_select (:symptoms, Symptom.all,
+        :name, :name,:prompt => true) %>
+    
+    <%= f.collection_check_boxes (:symptoms, Symptom.all,
+        :name, :name, :prompt => true) %>
+        
+    <%= f.submit "Create my account", class: "btn btn-primary" %>
+<% end %>
+
+  </div>
+ </div>

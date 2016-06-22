@@ -1,7 +1,10 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+Symptom.create(name: "冷え性")
+Symptom.create(name: "肩こり")
+Symptom.create(name: "むくみ")
+Symptom.create(name: "便秘")
+Symptom.create(name: "頭痛")
+Symptom.create(name: "不眠")
+Symptom.create(name: "寝起きの悪さ")
+Symptom.create(name: "禁煙")
+Symptom.create(name: "糖尿")
+Symptom.create(name: "高血圧")
