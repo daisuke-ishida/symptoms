@@ -6,6 +6,8 @@ class UserController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      flash[:success] = "Welcom to symptoms!"
+    redirect_to @user
    else
      render 'new'
     end

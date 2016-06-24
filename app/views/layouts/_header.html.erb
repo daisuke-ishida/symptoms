@@ -3,9 +3,26 @@
         <%= link_to "Let's share the health", "#", id: "logo" %>
         <nav>
             <ul class="nav navbar-nav navbar-right">
-                <li><%= link_to "Home", "#" %></li>
+                <li><%= link_to "Home", root_path %></li>
                 <li><%= link_to "Help", "#" %></li>
+              <% if logged_in? %>
                 <li><%= link_to "Log_in", "#" %></li>
+                <li class="dropkdown">
+                    <a herf="#" class="dropdown-toggle" data-toggle="dropdown">
+                        Account<b class="caret"></b>
+                    </a>
+                <ul class="dropdown-menu">
+                    <li><%= link_to "Profile", current_user %></li>
+                    <li><%= link_to "Settings", "#" %></li>
+                    <li class="divider"></li>
+                    <li>
+                        <%= link_to "Log out", log_out_path, method: "delete" %>
+                    </li>
+                </ul>
+                </li>
+              <% else %>
+                <li><%= link_to "Log in", log_in_path %></li>
+              <% end %>
             </ul>
         </nav>
     </div>
