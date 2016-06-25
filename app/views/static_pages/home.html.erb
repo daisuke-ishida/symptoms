@@ -7,6 +7,10 @@
         <section class="post_form" %>
             <%= render 'shared/post_form' %>
     </aside>
+    <div class="col-md-8">
+        <h3>Post Feed</h3>
+        <%= render 'shared/feed' %>
+    </div>
 </div>
 <% else %>
   <div class="center-jambotron">
@@ -14,3 +18,4 @@
       
       <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
   </div>
+<% end %>

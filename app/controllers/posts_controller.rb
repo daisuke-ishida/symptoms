@@ -7,6 +7,7 @@ class PostsController < ApplicationController
             flash[:success] ="Post created"
             redirect_to root_url
         else
+            @feed_items = current_user.feed_items.includes(:user).order(created_at: :desc)
             render 'static_page/home'
         end
     end
@@ -21,6 +22,6 @@ class PostsController < ApplicationController
     
     private
     def post_params
-        params.require(:post).permit(:content)
+        params.require(:post).permit(:content, :image)
     end
 end
