@@ -1,0 +1,20 @@
+<h1>User</h1>
+
+<div "container">
+    <% @users.each do |user| %>
+      <%= gravatar_for(user) %>
+      <%= user.name %>
+      <%= user.age %>
+      <%= user.sex %>
+    <% end %>
+    <% @symptoms.each do |symptom| %>
+      <%= symptom %>
+    <% end %>
+  <%= form_for(current_user.following_relationships.build, remote: true) do |f| %>
+     <div><%= hidden_field_tag :followed_id, current_user.id %></div>
+     <%= f.submit "Follow", class: "btn btn-primary" %>
+     <%= f.submit "Post一覧", link_to post_path(:user_id), class: "btn btn-primary" %>
+<% end %>
+    
+  
+</div>

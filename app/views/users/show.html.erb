@@ -1,0 +1,32 @@
+<div class="row">
+    <aside class="col-md-4">
+        <section class="user-info">
+          <h1>
+             <%= gravatar_for @user %>
+             <%= @user.name %></br>
+          </h1>
+            <span>
+                <% @symptoms.each do |symptom| %>
+                <%= symptom.name %>
+                <% end %>
+            </span></br>
+           <span>
+            <%= @user.following_users.count %>
+            <%= link_to "Followings", followings_user_path %>
+           </span>
+           <span>
+             <%= @user.follower_users.count %>
+             <%= link_to "フォロワー", followers_user_path %>
+           </span>
+        </section>
+    </aside>
+    <div class="col-md-8">
+        <%= render 'follow_form' if logged_in? %>
+        <% if @user.posts.any? %>
+        <h3>Post (<%= @user.posts.count %>)</h3>
+        <ol class="post">
+            <%= render @posts %>
+        </ol>
+        <% end %>
+    </div>
+</div>

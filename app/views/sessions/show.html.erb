@@ -1,0 +1,17 @@
+<div class="container">
+    <div class="jumbotron  background-size:cover;">
+        <h1><%= @user.name %>さん、Let's share the healthにようこそ</h1>
+    </div>
+    <div class="container">
+        <div class="col-md-4">
+           <%= link_to "投稿", new_post_path %>
+        </div>
+        <div class="col-md-4">
+            <%= link_to "自分の症状から検索する場合はこちら", search_user_path(@user.id) %></br>
+            <%= link_to "その他の症状から検索する場合はこちら", "#" %>
+        </div>
+        <div>
+            <%= link_to "お気に入り", favorite_user_path(@user.id) %>
+        </div>
+    </div>
+</div>

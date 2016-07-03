@@ -1,0 +1,27 @@
+<div class="row">
+    <aside class="col-md-4">
+        <section class="user-info">
+            <h1>
+                <%= gravatar_for @user %>
+                <%= @user.name %></br>
+                <%= @user.age %></br>
+                <%= @user.sex %></br>
+                <%= @user.symptoms %>
+            </h1>
+        </section>
+    </aside>
+    
+    <% if @users.any? %>
+        <div class="col-md-8">
+        <% @users.each do |user| %>
+              <div id="users follow" class="container" style="padding-bottom: 10px">
+                 <%= gravatar_for user %>
+                 <%= user.name %></br>
+                 <%= user.age %></br>
+                 <%= user.sex %>
+                 <%= user.symptoms %>
+              </div>
+        <% end %>
+        </div>
+    <% end %>
+ </div>

@@ -1,9 +1,26 @@
 Rails.application.routes.draw do
+
   root to: 'static_pages#home'
-  get 'signup', to: 'user#new'
+  get 'signup', to: 'users#new'
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
+   get 'edit' , to: 'users#edit'
+  put 'update', to: 'users#update'
+  
+  resources :users do
+    member do
+      get :followings, :followers, :search, :favorite
+    end
+  end
+  
+  resources :posts do
+    member do
+      post 'add', to: 'favorites#create'
+    end
+  end
+  
+  resources :favorites, only: [:destroy]
   
   resources :users
   resources :sessions, only: [:new, :create, :destroy]

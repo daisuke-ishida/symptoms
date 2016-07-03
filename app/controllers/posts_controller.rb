@@ -1,5 +1,9 @@
 class PostsController < ApplicationController
-    befor_action :logged_in_user, only[:create]
+    before_action :logged_in_user, only: [:create]
+    
+    def new
+        @post = Post.new
+    end
     
     def create
         @post = current_user.posts.build(post_params)

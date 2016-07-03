@@ -1,0 +1,58 @@
+<%= form_for(@user, :html=>{class:"form-horizontal"}) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+
+    <div class="form-group">
+        <%= f.label :name, class:"col-md-2 label-control" %>
+        <div class="col-md-10">
+            <%= f.text_field :name, class:"form-control" %>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <%= f.label :age, class:"col-md-2 label-control"  %>
+        <div class="col-md-10">
+            <%= f.text_field :age, class:"form-control" %>
+        </div>
+    </div>  
+    <div class="form-group">    
+        <%= f.label :sex, class:"col-md-2 label-control"  %>
+        <div class="col-md-10">
+            <%= f.text_field :sex,class:"form-control" %>
+        </div>
+    </div>  
+    <div class="form-group">    
+        <%= f.label :email, class:"col-md-2 label-control"  %>
+        <div class="col-md-10">
+            <%= f.text_field :email, class:"col-md-10 form-control" %>
+        </div>
+    </div>  
+    <div class="form-group">    
+        <%= f.label :password, class:"col-md-2 label-control"  %>
+        <div class="col-md-10">
+            <%= f.password_field :password, class:"form-control" %>
+        </div>
+    </div>   
+    <div class="form-group">   
+        <%= f.label :password_confirmation, "Confirmation", class:"col-md-2 label-control"  %>
+        <div class="col-md-10">
+            <%= f.password_field :password_confirmation, class:"col-md-10 form-control" %>
+        </div>
+     </div>
+     
+     <div class="form-group">
+         <div class="col-md-offset-2 col-md-10">
+            <%= f.collection_check_boxes(:ownerships, Symptom.all,:id,:name,:prompt => "症状を選択して下さい") do |s| %>
+                <%= s.label { s.check_box + s.text } %>
+            <% end %>
+            
+            </br>
+            "その他にお困りの場合はこちら"<%= f.text_field :symptoms, class: "form-control" %>
+        </div>
+     </div>   
+     <div class="form-group">
+        <%= f.submit "Create my account", class: "btn btn-primary" %>
+    </div>
+<% end %>
+
+ 
+   

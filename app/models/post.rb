@@ -5,6 +5,9 @@ class Post < ActiveRecord::Base
   validates :content, presence: true, length: { maximum: 400 }
   validate :image_size
   
+  has_many :favorites
+  has_many :users, through: :favorites
+  
   private
     def image_size
       if image_size > 5.megabytes
