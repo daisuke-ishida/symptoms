@@ -6,8 +6,12 @@
                 <%= @user.name %></br>
                 <%= @user.age %></br>
                 <%= @user.sex %></br>
-                <%= @user.symptoms %>
             </h1>
+            <span>
+                <% @user.symptoms.each do |symptoms| %>
+                <%= symptom.name %>
+                <% end %>
+            </span>
         </section>
     </aside>
     

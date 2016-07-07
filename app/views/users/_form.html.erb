@@ -41,6 +41,7 @@
      
      <div class="form-group">
          <div class="col-md-offset-2 col-md-10">
+             どんな症状でお困りですか？
             <%= f.collection_check_boxes(:ownerships, Symptom.all,:id,:name,:prompt => "症状を選択して下さい") do |s| %>
                 <%= s.label { s.check_box + s.text } %>
             <% end %>

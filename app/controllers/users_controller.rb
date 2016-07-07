@@ -70,14 +70,21 @@ class UsersController < ApplicationController
     target = Array.new
     my_symptoms.each do |e|
          target = target + Ownership.where(symptom_id: e).pluck(:user_id)
-    end
-    target.uniq!  #重複削除
+         @target = target.group_by(&:to_i).sort_by{|_,v|-v.size}.map(&:first)
+
+  #  target.uniq!  #重複削除
     #targetは症状を持っている人IDの配列
     
-    @users = User.find(target)
     
-    @symptoms = Ownership.where(user_id: current_user.id).pluck(:symptom_id)
-   
+     @users = User.find(@target).index_by(&:id).slice(*@target).values
+     end
+    
+    
+    @target.each do |t|
+    problem = Ownership.where(user_id: t).pluck(:symptom_id)
+    @symptoms = Symptom.find(problem)
+    end
+    
   end
   
   private
