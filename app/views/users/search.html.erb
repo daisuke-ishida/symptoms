@@ -10,13 +10,9 @@
            <% user.symptoms.each do |symptom| %>
              <%= symptom.name %>
            <% end %>
-         <% end %>
-     </div>
-</div>
-  
-<div>
-   <%= form_for(current_user.following_relationships.build, remote: true) do |f| %>
-     <div><%= hidden_field_tag :followed_id, current_user.id %></div>
-     <%= f.submit "Follow", class: "btn btn-primary" %>
-    <% end %>
+        <div class="action clearfix">
+          <%= link_to "Profile", user_path(user.id), class: "btn btn-primary" %>
+        </div>
+        <% end %>
+    </div>
 </div>

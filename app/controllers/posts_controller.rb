@@ -9,7 +9,7 @@ class PostsController < ApplicationController
         @post = current_user.posts.build(post_params)
         if @post.save
             flash[:success] ="Post created"
-            redirect_to root_url
+            redirect_to post_url
         else
             @feed_items = current_user.feed_items.includes(:user).order(created_at: :desc)
             render 'static_page/home'

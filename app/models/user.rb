@@ -35,7 +35,7 @@ class User < ActiveRecord::Base
     end
     
     def following?(other_user)
-        following_user.include?(other_user)
+        following_users.include?(other_user)
     end
     
     def feed_items

@@ -3,12 +3,12 @@
 <div class="field">
     <%= f.text_area :content, placeholder: "Compose new post" %>
 </div>
-    <%= f.submit "Post", class: "btn btn-primary" %>
 　<span class="image">
 　     <%= f.file_field :image, accept: 'image/jpeg,image/gif,image/png' %>
 　</span>
+　<%= f.submit "Post", class: "btn btn-primary" %>
+　<%= link_to "戻る" , new_session_path, class: "btn btn-danger" %>
 <% end %>
-
 
 <script type="text/javascript">
     $('#post_image').bind('change', function() {
