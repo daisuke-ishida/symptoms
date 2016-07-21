@@ -69,8 +69,8 @@ class UsersController < ApplicationController
     #他のユーザーをtargetにidだけ拾ってくる
     target = Array.new
     my_symptoms.each do |e|
-         target = target + Ownership.where(symptom_id: e).pluck(:user_id)
-         @target = target.group_by(&:to_i).sort_by{|_,v|-v.size}.map(&:first)
+         target = target + Ownership.where(symptom_id: e).pluck(:user_id)  
+         @target = target.group_by(&:to_i).sort_by{|_,v|-v.size}.map(&:first)  #同じ症状を持っている人を、一致した症状の数が多い順に並べる
 
   #  target.uniq!  #重複削除
     #targetは症状を持っている人IDの配列
