@@ -8,7 +8,12 @@
         </div>
         <div class="col-md-4">
             <%= link_to "自分の症状から検索する場合はこちら", search_user_path(@user.id) %></br>
-            <%= link_to "その他の症状から検索する場合はこちら", new_symptom_path %>
+            <%= link_to "その他の症状から検索する場合はこちら", "#" %>
+             <%= search_form_for(@q, url: pickup_user_path(:id), method: :get) do |f| %>
+             <%= f.collection_check_boxes(:ownerships_symptom_in, Symptom.all, :id, :name) do |s| %>
+                <%= s.label { s.check_box + s.text } %>
+          <% end %>
+          <% end %>
         </div>
         <div>
             <%= link_to "お気に入り", favorite_user_path(@user.id) %>
