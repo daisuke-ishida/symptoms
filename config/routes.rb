@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  
   root to: 'static_pages#home'
   get 'signup', to: 'users#new'
   get 'login', to: 'sessions#new'
@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   resources :posts
   resources :relationships, only: [:create, :destroy]
   resources :symptoms
+  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -82,4 +83,6 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+  
+  get '*anything' => 'errors#routing_error'
 end
