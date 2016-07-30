@@ -4,13 +4,15 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include SessionsHelper
   
-  class Frbidden < ActionController::ActionControllerError; end
+  class Forbidden < ActionController::ActionControllerError; end
   class IpAddressRejected < ActionController::ActionControllerError; end
     
-  rescue_from Exception, with: :rescue500
+  # rescue_from Exception, with: :rescue500
+  rescue_from ActionController::ParameterMissing, with: :rescue400
   rescue_from Forbidden, with: :rescue403
   rescue_from IpAddressRejected, with: :rescue403
   rescue_from ActionController::RoutingError, with: :rescue404
+  rescue_from ActiveRecord::RecordNotFound, with: :rescue404
   
   private 
   def logged_in_user
@@ -19,6 +21,11 @@ class ApplicationController < ActionController::Base
       flash[:danger] = "Please log in"
       redirect_to login_url
     end
+  end
+  
+  def rescue400(e)
+    @exception = e
+    render 'errors/bad_request', status: 400
   end
   
   def rescue404(e)

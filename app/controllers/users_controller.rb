@@ -76,7 +76,10 @@ class UsersController < ApplicationController
     #targetは症状を持っている人IDの配列
     
     
-     @users = User.find(@target).index_by(&:id).slice(*@target).values
+    # @users = User.find(@target).index_by(&:id).slice(*@target).values.page(params[:page])
+     @users = Kaminari.paginate_array(
+                    User.find(@target).index_by(&:id).slice(*@target).values
+                  ).page(params[:page]).per(10)
      end
     
     
