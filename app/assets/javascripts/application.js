@@ -14,3 +14,11 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require_tree .
+
+/*global $*/
+$(document).on('ready page:load', function() {
+      $('a[data-popup="true"]').live('click', function(e) {
+            window.open($(this).href);
+            e.preventDefault();
+      });
+});

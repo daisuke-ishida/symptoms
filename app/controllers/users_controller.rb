@@ -47,10 +47,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @users = @user.following_users(params[:followed_id])
   end
-
+  
   def followers
     @user = User.find(params[:id])
-    @users = @user.follower_users(params[:followere_id])
+    @users = @user.follower_users(params[:follower_id])
   end
   
   # def have
@@ -69,6 +69,35 @@ class UsersController < ApplicationController
     #他のユーザーをtargetにidだけ拾ってくる
     target = Array.new
     my_symptoms.each do |e|
+         target = target + Ownership.where(symptom_id: e).pluck(:user_id)  
+         @target = target.group_by(&:to_i).sort_by{|_,v|-v.size}.map(&:first)  #同じ症状を持っている人を、一致した症状の数が多い順に並べる
+
+  # 自分とフォローしている人は除く
+  #  target.uniq!  #重複削除
+    #targetは症状を持っている人IDの配列
+    
+    
+     # @user = User.find(@target).index_by(&:id).slice(*@target).values
+     @users = Kaminari.paginate_array(
+                    User.find(@target).index_by(&:id).slice(*@target).values
+                  ).page(params[:page]).per(10)
+     end
+    
+    
+  #  @target.each do |t|
+  #  problem = Ownership.where(user_id: t).pluck(:symptom_id)
+  #  @symptoms = Symptom.find(problem)
+  #  end
+    
+  end
+  
+  def pickup
+        @q = Symptom.ransack(params[:id])
+        @symptoms = @q.result
+         my_symptoms = @symptoms.pluck(:id)
+        
+        target = Array.new
+    my_symptoms.each do |e|
          target = target + Ownership.where(symptom_id: e).pluck(:user_id)
          @target = target.group_by(&:to_i).sort_by{|_,v|-v.size}.map(&:first)
 
@@ -76,18 +105,8 @@ class UsersController < ApplicationController
     #targetは症状を持っている人IDの配列
     
     
-    # @users = User.find(@target).index_by(&:id).slice(*@target).values.page(params[:page])
-     @users = Kaminari.paginate_array(
-                    User.find(@target).index_by(&:id).slice(*@target).values
-                  ).page(params[:page]).per(10)
+     @users = User.find(@target).index_by(&:id).slice(*@target).values
      end
-    
-    
-    @target.each do |t|
-    problem = Ownership.where(user_id: t).pluck(:symptom_id)
-    @symptoms = Symptom.find(problem)
-    end
-    
   end
   
   private

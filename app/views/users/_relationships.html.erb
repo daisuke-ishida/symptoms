@@ -8,7 +8,7 @@
                 <%= @user.sex %></br>
             </h1>
             <span>
-                <% @user.symptoms.each do |symptoms| %>
+                <% @user.symptoms.each do |symptom| %>
                 <%= symptom.name %>
                 <% end %>
             </span>
@@ -23,7 +23,9 @@
                  <%= user.name %></br>
                  <%= user.age %></br>
                  <%= user.sex %>
-                 <%= user.symptoms %>
+                 <% user.symptoms.each do |symptom| %>
+                 <%= symptom.name %>
+                 <% end %>
               </div>
         <% end %>
         </div>

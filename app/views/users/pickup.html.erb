@@ -1,0 +1,18 @@
+<div class="container">
+    <%= page_entries_info @users %>
+     <div class="container-inner inner-default clearfix">
+         <% @users.each do |user| %>
+           <%= gravatar_for(user) %>
+           <%= user.name %></br>
+           <%= user.age %></br>
+           <%= user.sex %></br>
+           <% user.symptoms.each do |symptom| %>
+             <%= symptom.name %>
+           <% end %>
+        <div class="action clearfix">
+          <%= link_to "Profile", user_path(user.id), class: "btn btn-primary" %>
+        </div>
+        <% end %>
+    </div>
+    <%= paginate @users %>
+</div>
