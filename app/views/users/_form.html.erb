@@ -17,7 +17,7 @@
     <div class="form-group">    
         <%= f.label :sex, class:"col-md-2 label-control"  %>
         <div class="col-md-10">
-            <%= f.text_field :sex,class:"form-control" %>
+            <%= f.select :sex, ['男性', '女性'], { include_blank: '選択してください' } %>
         </div>
     </div>  
     <div class="form-group">    
@@ -49,7 +49,7 @@
 
             <%= link_to("その他にお困りの場合はこちら",
                 {:controller => 'symptoms', :action => 'new'},
-                {:onclick=>"window.open(this.href, 'new_symptom', 'height=400, width=800');return false;" })
+                {:onclick=>"window.open(this.href, 'new_symptom', 'height=200, width=800');return false;" })
             %>
      </div>
      <div class="form-group">

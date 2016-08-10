@@ -1,0 +1,14 @@
+<%= form_for(@symptom, url:{action:"pickup", controller:"users"}, html:{class:"form-horizontal"}) do |f| %>
+     <div class="form-group">
+           <%= f.label :symptoms, "どんな症状をお探しですか？" %>
+            <%= f.collection_check_boxes(:ownerships, Symptom.all,:id,:name) do |s| %>
+                <%= s.label { s.check_box + s.text } %>
+            <% end %>
+    </div>
+    <div class="form-group">
+        <%= f.label :name, "症状名" %>
+        <%= f.text_field :name, class: "form-control" %>
+    </div>
+   
+    <%= f.submit "検索", class: "btn btn-primary" %>
+<% end %>

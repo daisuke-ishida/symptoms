@@ -11,8 +11,8 @@ class ApplicationController < ActionController::Base
   rescue_from ActionController::ParameterMissing, with: :rescue400
   rescue_from Forbidden, with: :rescue403
   rescue_from IpAddressRejected, with: :rescue403
-  rescue_from ActionController::RoutingError, with: :rescue404
-  rescue_from ActiveRecord::RecordNotFound, with: :rescue404
+  # rescue_from ActionController::RoutingError, with: :rescue404
+  # rescue_from ActiveRecord::RecordNotFound, with: :rescue404
   
   private 
   def logged_in_user

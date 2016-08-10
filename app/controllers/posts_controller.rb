@@ -8,17 +8,18 @@ class PostsController < ApplicationController
     
     def create
         @post = current_user.posts.build(post_params)
+        @post.user = current_user
         if @post.save
             flash[:success] ="Post created"
-            redirect_to post_url
+            redirect_to root_url
         else
             @feed_items = current_user.feed_items.includes(:user).order(created_at: :desc)
-            render 'static_page/home'
+            render 'static_pages/home'
         end
     end
     
     def destroy
-        @post = current_user.post.find_by(id: params[:id])
+        @post = current_user.posts.find_by(id: params[:id])
         return redirect_to root_url if @post.nil?
         @post.destroy
         flash[:success] = "Post deleted"

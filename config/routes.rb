@@ -8,6 +8,9 @@ Rails.application.routes.draw do
    get 'edit' , to: 'users#edit'
   put 'update', to: 'users#update'
   
+  get 'startpickup', to: 'users#startpickup'
+  post 'users/pickup', to: 'users#pickup'
+  
   resources :users do
     member do
       get :followings, :followers, :search, :pickup, :favorite

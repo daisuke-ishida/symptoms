@@ -1,4 +1,5 @@
 <div class="container">
+    <% my_symptoms = current_user.symptoms %>
     <%= page_entries_info @users %>
      <div class="container-inner inner-default clearfix">
          <% @users.each do |user| %>
@@ -7,8 +8,12 @@
            <%= user.age %></br>
            <%= user.sex %></br>
            <% user.symptoms.each do |symptom| %>
-             <%= symptom.name %>
+            <%if my_symptoms.include?(symptom) %>
+                <span class="strong"> <%= symptom.name %></span>
+             <% else %>
+                <span> <%= symptom.name %></span>
            <% end %>
+         <% end %>
         <div class="action clearfix">
           <%= link_to "Profile", user_path(user.id), class: "btn btn-primary" %>
         </div>

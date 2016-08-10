@@ -13,3 +13,8 @@
  *= require_tree ./shared
  *= require_self
  */
+ 
+span.strong {
+    font-weight: 800;
+    font-style:italic;
+}

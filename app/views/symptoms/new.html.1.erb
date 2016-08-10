@@ -1,0 +1,14 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="panel-title">検索</div>
+          <%= search_form_for(@q, url: symptoms_path, method: :get) do |f| %>
+          <%= f.collection_check_boxes(:symptoms_in, Symptom.all, :id, :name) do |s| %>
+                <%= s.label { s.check_box + s.text } %>
+          <% end %>
+          <% end %>
+        </div>
+    </div>
+    <div>
+        <%= f.submit '検索', class: "btn btn-primary" %>
+    </div>
+</div>

@@ -20,7 +20,17 @@ class SymptomsController < ApplicationController
     end
     
     def new
-        render text: "You call symptoms_controller.rb def new"
+        @symptom = Symptom.new
     end
     
+    def create
+        symptom = Symptom.new(symptom_params)
+        symptom.save
+    end
+
+private
+
+    def symptom_params
+        params.require(:symptom).permit(:name)
+    end
 end
