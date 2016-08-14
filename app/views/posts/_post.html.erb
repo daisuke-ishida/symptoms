@@ -3,6 +3,8 @@
     <span class="user"><%= link_to post.user.name, post.user %></span>
     <span class="content">
         <%= post.content %>
+    </span>
+    <span class="image">
         <%= image_tag post.image.url if post.image? %>
     </span>
     <span class="timestamp">
@@ -10,6 +12,12 @@
         <% if current_user == post.user %>
           <%= link_to "delete", post, method: :delete, 
                                       data: { confirm: "You sure?" } %>
+        <% end %>
+        <% unless current_user == post.user %>
+           <%= link_to "お気に入りに追加",
+            favorites_path(post_id: post.id, user_id: current_user),
+            method: :post,
+            class: "btn btn-primary" %>
         <% end %>
     </span>
 </li>

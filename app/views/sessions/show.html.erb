@@ -10,12 +10,9 @@
             <%= link_to "自分の症状から検索する場合はこちら", search_user_path(@user.id) %></br>
             <%= link_to "その他の症状から検索する場合はこちら", startpickup_path %>
              
-               
-            
-          
         </div>
         <div>
-            <%= link_to "お気に入り", favorite_user_path(@user.id) %>
+            <%= link_to "お気に入り", favorite_path(@user.id) %>
         </div>
     </div>
 </div>

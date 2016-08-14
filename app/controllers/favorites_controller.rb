@@ -1,12 +1,19 @@
 class FavoritesController < ApplicationController
+    
+    # post_id と user_idがパラメータで渡ってくる
     def create
-        @user_id = session[:id]
-        @post_id = Post.find(params[:id]).id
-        @favorite = Favorite.new(post_id: @post_id, user_id: @user_id)
-        if favorite.save
-          redirect_to pot_path
+        @favpost = Post.find(params[:post_id])
+        @favorite = current_user.favorites.build(user_id: current_user.id, post_id: @favpost.id)
+        if @favorite.save
+          redirect_to user_path(@favpost.user.id)
         end
     end
+    
+    def show
+        @user = current_user
+        @favorites = Favorite.where(user_id: @user.id)
+    end
+    
     
     def destroy
         @favorite = Favorite.find(params[:id])

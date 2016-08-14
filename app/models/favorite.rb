@@ -1,4 +1,4 @@
 class Favorite < ActiveRecord::Base
-  belongs_to :user, class_name: "User"
-  belongs_to :post, class_name: "Post"
+  belongs_to :user
+  belongs_to :post
 end

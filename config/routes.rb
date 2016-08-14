@@ -17,16 +17,16 @@ Rails.application.routes.draw do
     end
   end
   
-  resources :posts do
-    member do
-      post 'add', to: 'favorites#create'
-    end
-  end
+  # resources :posts do
+  #  member do
+  #    post 'add', to: 'favorites#create'
+  #  end
+  # end
   
-  resources :favorites, only: [:destroy]
+  resources :favorites, only: [:create, :show, :destroy]
   
-  resources :users
-  resources :sessions, only: [:new, :create, :destroy]
+#  resources :users
+  resources :sessions, only: [:new, :create, :show, :destroy]
   resources :posts
   resources :relationships, only: [:create, :destroy]
   resources :symptoms

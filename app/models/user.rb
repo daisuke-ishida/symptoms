@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
     has_many :symptoms , through: :ownerships
     
     has_many :favorites, foreign_key: "user_id", dependent: :destroy
-    has_many :posts, through: :favorites
+    has_many :favposts, through: :favorites, source: :post
     
     def follow(other_user)
         following_relationships.find_or_create_by(followed_id: other_user.id)
@@ -42,6 +42,7 @@ class User < ActiveRecord::Base
     def feed_items
        Post.where(user_id: following_user_ids+[self.id])
     end
+    
     
     def own(user, symp_id)
         Ownership.find_or_create_by(user_id: user.id, symptom_id: symp_id)

@@ -14,6 +14,15 @@ class SessionsController < ApplicationController
     end
   end
   
+  def show
+    @user = current_user
+    if logged_in?
+      render 'show'
+    else
+      render 'new'
+    end
+  end
+  
   def destroy
     session[:user_id] = nil
     redirect_to root_path

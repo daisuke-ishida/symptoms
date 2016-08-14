@@ -1,13 +1,12 @@
 class Post < ActiveRecord::Base
   belongs_to :user
-  default_scope -> { order(created_at: :desc) }
   mount_uploader :image, ImageUploader
   validates :user_id, presence: true
   validates :content, presence: true, length: { maximum: 400 }
   validate :image_size
   
-  has_many :favorites
-  has_many :users, through: :favorites
+   has_many :favorites
+   has_many :favusers, through: :favorites
   
   private
     def image_size

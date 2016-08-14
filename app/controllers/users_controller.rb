@@ -58,10 +58,10 @@ class UsersController < ApplicationController
   #   @user = User.find_by(symptoms_name: @symptoms.name)
   # end
   
-  def favorite
-    @user = User.find(params[:id])
-    @favorites = Favorite.where("user_id=?", @user)
-  end
+  # def favorite
+  #  @user = User.find(params[:id])
+  #  @favorites = Favorite.where("user_id=?", @user)
+  # end
   
   def search
     my_symptoms = current_user.symptoms.pluck(:id)

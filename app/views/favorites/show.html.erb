@@ -1,6 +1,6 @@
 <h3>お気に入り一覧</h3>
 <% if current_user.favorites.any? %>
   <% @favorites.each do |f| %>
-<% else %>
-  <%= "お気に入りはありません" %>
+   <%= f.content %>
+  <% end %>
 <% end %>
