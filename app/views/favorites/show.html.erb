@@ -2,5 +2,8 @@
 <% if current_user.favorites.any? %>
   <% @favorites.each do |f| %>
    <%= f.content %>
-  <% end %>
+   <%= image_tag f.image.url %>
+   <%= link_to "削除", favorite_path, method: :delete, class: "btn btn-primary" %>
+   <%end %>
 <% end %>
+<%= link_to "戻る", user_path, class:"btn btn-primary" %>
