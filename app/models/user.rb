@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
     has_many :symptoms , through: :ownerships
     
     has_many :favorites, foreign_key: "user_id", dependent: :destroy
-    has_many :favposts, through: :favorites, source: :post
+    has_many :favposts, through: :favorites, source: :_ollowedpost
     
     def follow(other_user)
         following_relationships.find_or_create_by(followed_id: other_user.id)

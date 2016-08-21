@@ -13,18 +13,17 @@ class FavoritesController < ApplicationController
     
     def show
         @favorites = Favorite.where(user_id: current_user.id)
-        
-        
+ #       @post = @favorites.find_by(params[:post_id])
+ #       @user_id = @post.user_id
+ #       @symptoms = Symptom.find_by(@user_id)
     end
-    
-    
+
     def destroy
-        @favorite = Favorite.find_by(params[:content])
+        @favorite = Favorite.find(params[:id])
         if @favorite.destroy
             redirect_to favorite_path
         end
     end
-    
     
 end
 

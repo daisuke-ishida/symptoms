@@ -31,5 +31,9 @@
     </div>
 </div>
 <div>
-    <%= link_to "戻る", session_path(current_user.id), method: :get, class: "btn btn-primary" %>
+    <% if @user == current_user %>
+      <%= link_to "戻る", session_path(current_user.id), method: :get, class: "btn btn-primary" %>
+    <% else %>
+      <%= link_to "戻る", search_user_path, class: "btn btn-primary" %>
+    <% end %>
 </div>

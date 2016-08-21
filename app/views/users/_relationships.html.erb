@@ -27,6 +27,7 @@
                  <%= symptom.name %>
                  <% end %>
               </div>
+              <%= link_to "Profile", user_path(user.id), class: "btn btn-primary" %>
         <% end %>
         </div>
     <% end %>

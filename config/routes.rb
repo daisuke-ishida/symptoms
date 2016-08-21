@@ -17,11 +17,11 @@ Rails.application.routes.draw do
     end
   end
   
-  # resources :posts do
-  #  member do
-  #    post 'add', to: 'favorites#create'
-  #  end
-  # end
+   resources :posts do
+    member do
+      get :followed
+    end
+   end
   
   resources :favorites, only: [:create, :show, :destroy]
   

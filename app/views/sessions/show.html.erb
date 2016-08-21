@@ -11,8 +11,9 @@
             <%= link_to "その他の症状から検索する場合はこちら", startpickup_path %>
              
         </div>
-        <div>
+        <div class="col-md-4">
             <%= link_to "お気に入り", favorite_path(@user.id) %>
+            <%= link_to "お気に入られ", followed_post_path(@user.id) %>
         </div>
     </div>
 </div>

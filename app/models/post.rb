@@ -5,8 +5,8 @@ class Post < ActiveRecord::Base
   validates :content, presence: true, length: { maximum: 400 }
   validate :image_size
   
-   has_many :favorites
-   has_many :favusers, through: :favorites
+   has_many :favorites, foreign_key: "post_id", dependent: :destroy
+   has_many :favusers, through: :favorites, source: :post
   
   private
     def image_size

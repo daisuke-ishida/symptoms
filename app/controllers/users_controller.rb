@@ -92,13 +92,6 @@ class UsersController < ApplicationController
     #　　@other_symptoms = o.symptoms
    # end
     
-    
-    
-    # @target.each do |t|
-    # problem = Ownership.where(user_id: t).pluck(:symptom_id)
-    # @symptoms = Symptom.find(problem)
-    # end
-    
   end
   
   def startpickup
@@ -124,11 +117,10 @@ class UsersController < ApplicationController
          target = target + Ownership.where(symptom_id: e).pluck(:user_id)
          @target = target.group_by(&:to_i).sort_by{|_,v|-v.size}.map(&:first)
 
-  #  target.uniq!  #重複削除
     #targetは症状を持っている人IDの配列
     
     
-     @users = @users = Kaminari.paginate_array(
+     @users = Kaminari.paginate_array(
        User.find(@target).index_by(&:id).slice(*@target).values
        ).page(params[:page]).per(10)
      end
