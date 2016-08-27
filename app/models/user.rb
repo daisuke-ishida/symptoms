@@ -48,4 +48,8 @@ class User < ActiveRecord::Base
         Ownership.find_or_create_by(user_id: user.id, symptom_id: symp_id)
     end
     
+   # def active?
+    #    start_date <= Date.today &&
+   #       (end_date.nil? || end_date > Date.today)
+   # end
 end

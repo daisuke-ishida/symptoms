@@ -20,12 +20,22 @@ class SymptomsController < ApplicationController
     end
     
     def new
-        @symptom = Symptom.new
+        hostname = request.host
+        if (/#{hostname}/.match(request.referrer))
+          @symptom = Symptom.new
+        else
+          render :fail_new
+        end
     end
     
+    
     def create
-        symptom = Symptom.new(symptom_params)
-        symptom.save
+        hostname = request.host
+        if (/#{hostname}/.match(request.referrer))
+
+            symptom = Symptom.new(symptom_params)
+            symptom.save
+        end
     end
 
 private

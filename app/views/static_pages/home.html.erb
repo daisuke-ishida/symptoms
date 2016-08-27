@@ -13,18 +13,19 @@
     </div>
 </div>
 <% else %>
-  <div class="center-jumbotron" style="background-color:lightblue; background-size:cover;">
+  <div class="container-fluid">
+    <div class="col-md-12" style="background-color:pink; height: 250px">
       <h1>Let' s Share The Health!</h1>
       <h2>健康の悩みをシェアしてみませんか？</br>
           あなたと同じ悩みを持った人がきっといます。
       </h2>
-  </div>
-  <div class="col-md-4">
-      新規登録はこちら</br>
+    </div>
+  <div class="col-md-6 well center-block">
+      <h3>新規登録はこちら</h3></br>
       <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
   </div>
-  <div class="col-md-4">
-      ログインはこちら</br>
+  <div class="col-md-6 well center-block">
+      <h3>ログインはこちら</h3></br>
       <%= link_to "Log in", login_path, class: "btn btn-lg btn-primary" %>
   </div>
 <% end %>
