@@ -11,6 +11,10 @@ Rails.application.routes.draw do
   get 'startpickup', to: 'users#startpickup'
   post 'users/pickup', to: 'users#pickup'
   
+  get 'inquiry', to: 'inquiry#index'
+  post 'inquiry/confirm', to: 'inquiry#confirm'
+  post 'inquiry/thanks', to: 'inquiry#thanks'
+  
   resources :users do
     member do
       get :followings, :followers, :search, :pickup, :favorite
