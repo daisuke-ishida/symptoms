@@ -1,9 +1,9 @@
 class InquiryMailer < ApplicationMailer
-    default to: "送信先メアド"
-    default from: "送信元メアド"
+    default to: "berg7295karajan@gmail.com"
+    default from: "berg7295karajan@gmail.com"
     
-    def recieve_email(inquiry)
+    def received_email(inquiry)
         @inquiry = inquiry
-        mail(:subject => 'ユーザーに送信されるメールのタイトル')
+        mail(:subject => 'お問い合わせを承りました。')
     end
 end

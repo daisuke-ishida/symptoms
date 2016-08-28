@@ -7,7 +7,7 @@ class InquiryController < ApplicationController
     
     def confirm
         @inquiry = Inquiry.new(inquiry_params)
-        if inquiry.valid?
+        if @inquiry.valid?
             render 'confirm'
         else
             render 'index'
@@ -16,7 +16,7 @@ class InquiryController < ApplicationController
     
     def thanks
         @inquiry = Inquiry.new(inquiry_params)
-        InquiryMailer.recieve.email(@inquiry).deliver
+        InquiryMailer.received_email(@inquiry).deliver
         
         flash[:notice] = "お問い合わせ頂き、ありがとうございました。"
         render 'thanks'
