@@ -19,7 +19,7 @@ class InquiryController < ApplicationController
         InquiryMailer.received_email(@inquiry).deliver
         
         flash[:notice] = "お問い合わせ頂き、ありがとうございました。"
-        render 'thanks'
+        render :action => 'thanks'
     end
     
     private

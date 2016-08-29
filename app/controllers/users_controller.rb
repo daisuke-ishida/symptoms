@@ -56,16 +56,6 @@ class UsersController < ApplicationController
     @users = @user.follower_users(params[:follower_id])
   end
   
-  # def have
-  #   @symptoms = Symptoms.current_user.own
-  #   @user = User.find_by(symptoms_name: @symptoms.name)
-  # end
-  
-  # def favorite
-  #  @user = User.find(params[:id])
-  #  @favorites = Favorite.where("user_id=?", @user)
-  # end
-  
   def search
     my_symptoms = current_user.symptoms.pluck(:id)
     
@@ -85,16 +75,7 @@ class UsersController < ApplicationController
                     User.find(@target).index_by(&:id).slice(*@target).values
                   ).page(params[:page]).per(10)
      end
-    
-    #@symptoms = Symptom.find(my_symptoms)
-    # @users.each do |o|
-    #  @others = Ownership.where(user_id: o).pluck(:symptom_id)
-    #  @other_symptoms = Symptom.find(@others)
-    # @total_symptoms = @symptoms + @other_symptoms
-    #@users.each do |o|
-    #　　@other_symptoms = o.symptoms
-   # end
-    
+     
   end
   
   def startpickup
