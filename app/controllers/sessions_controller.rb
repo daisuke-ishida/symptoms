@@ -33,7 +33,7 @@ before_action :check_timeout
   
  private
   
-  TIMEOUT = 5.minutes
+  TIMEOUT = 60.minutes
   
   def check_timeout
     if current_user

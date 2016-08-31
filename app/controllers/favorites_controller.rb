@@ -12,10 +12,7 @@ class FavoritesController < ApplicationController
     end
     
     def show
-        @favorites = Favorite.where(user_id: current_user.id)
- #       @post = @favorites.find_by(params[:post_id])
- #       @user_id = @post.user_id
- #       @symptoms = Symptom.find_by(@user_id)
+        @favorites = Kaminari.paginate_array(Favorite.where(user_id: current_user.id)).page(params[:page]).per(10)
     end
 
     def destroy

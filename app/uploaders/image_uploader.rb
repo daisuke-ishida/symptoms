@@ -2,10 +2,6 @@
 
 class ImageUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
-  include Cloudinary::CarrierWave
-  
-  cloudinary_transformation :angle => :exif, :flags => :force_strip
-  
   process resize_to_limit: [400, 400]
   
   # Include RMagick or MiniMagick support:

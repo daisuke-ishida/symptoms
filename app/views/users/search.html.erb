@@ -1,22 +1,31 @@
-<div class="container">
+<div class="container" style="margin-top:30px">
     <% my_symptoms = current_user.symptoms %>
     <%= page_entries_info @users %>
      <div class="container-inner inner-default clearfix">
          <% @users.each do |user| %>
-           <%= gravatar_for(user) %>
-           <%= user.name %></br>
-           <%= user.age %></br>
-           <%= user.sex %></br>
-           <% user.symptoms.each do |symptom| %>
-            <%if my_symptoms.include?(symptom) %>
-                <span class="strong"> <%= symptom.name %></span>
-             <% else %>
-                <span> <%= symptom.name %></span>
-           <% end %>
-         <% end %>
-        <div class="action clearfix">
-          <%= link_to "Profile", user_path(user.id), class: "btn btn-primary" %>
-        </div>
+           <div class="row well">
+             <div class="col-md-6">
+               <%= gravatar_for(user) %>
+               <%= user.name %></br>
+               <%= user.age %>歳</br>
+               <%= user.sex %></br>
+               <% user.symptoms.each do |symptom| %>
+               <% if my_symptoms.include?(symptom) %>
+                 <span class="strong"> <%= symptom.name %></span>
+               <% else %>
+                 <span> <%= symptom.name %></span>
+               <% end %>
+          　<% end %>
+               <div class="action clearfix">
+                 <%= link_to "Profile", user_path(user.id), class: "btn btn-info" %>
+               </div>
+             </div>
+             <div class="col-md-6 well">
+               <% user.posts.order(created_at: :desc).limit(1).each do |p| %>
+               <%= p.content %>
+               <% end %>
+             </div>
+          </div>
         <% end %>
     </div>
     <%= paginate @users %>

@@ -2,56 +2,77 @@
     <%= render 'shared/error_messages', object: f.object %>
 
     <div class="form-group">
-        <%= f.label :name, class:"col-md-2 label-control" %>
-        <div class="col-md-10">
+        <div class="col-md-2"></div>
+        <%= f.label :"名前", class:"col-md-2 control-label" %>
+        <div class="col-md-4">
             <%= f.text_field :name, class:"form-control" %>
         </div>
+        <div class="col-md-4"></div>
     </div>
     
     <div class="form-group">
-        <%= f.label :age, class:"col-md-2 label-control"  %>
-        <div class="col-md-10">
+        <div class="col-md-2"></div>
+        <%= f.label :"年齢", class:"col-md-2 control-label"  %>
+        <div class="col-md-2">
             <%= f.text_field :age, class:"form-control" %>
         </div>
+        <div class="col-md-6"></div>
     </div>  
-    <div class="form-group">    
-        <%= f.label :sex, class:"col-md-2 label-control"  %>
+    <div class="form-group"> 
+        <div class="col-md-2"></div>
+        <%= f.label :"性別", class:"col-md-2 control-label"  %>
         <div class="col-md-2">
             <%= f.select :sex, ['男性', '女性'], { include_blank: '選択してください' } %>
         </div>
+        <div class="col-md-6"></div>
     </div>  
     <div class="form-group">    
-        <%= f.label :email, class:"col-md-2 label-control"  %>
-        <div class="col-md-10">
+        <div class="col-md-2"></div>
+        <%= f.label :"emailアドレス", class:"col-md-2 control-label"  %>
+        <div class="col-md-4">
             <%= f.text_field :email, class:"col-md-10 form-control" %>
             <p class="help-block">半角文字で入力してください</p>
         </div>
+        <div class="col-md-4"></div>
     </div>  
     <div class="form-group">    
-        <%= f.label :password, class:"col-md-2 label-control"  %>
-        <div class="col-md-10">
+        <div class="col-md-2"></div>
+        <%= f.label :"パスワード", class:"col-md-2 control-label"  %>
+        <div class="col-md-4">
             <%= f.password_field :password, class:"form-control" %>
         </div>
+        <div class="col-md-4"></div>
     </div>   
     <div class="form-group">   
-        <%= f.label :password_confirmation, "Confirmation", class:"col-md-2 label-control"  %>
-        <div class="col-md-10">
+        <div class="col-md-2"></div>
+        <%= f.label :"パスワード確認", class:"col-md-2 control-label"  %>
+        <div class="col-md-4">
             <%= f.password_field :password_confirmation, class:"col-md-10 form-control" %>
         </div>
+        <div class="col-md-4"></div>
      </div>
      
      <div class="form-group">
+           <div class="col-md-2"></div>
+           <div class="col-md-8">
            <%= f.label :symptoms, "どんな症状でお困りですか？" %></br>
             <%= f.collection_check_boxes(:ownerships, Symptom.all,:id,:name) do |s| %>
                 <%= s.label { s.check_box + s.text } %>
             <% end %></br>
+            </div>
+            <div class="col-md-2"></div>
+     </div>
             
             <%#  POPUP WIndows 表示で症状追加 %>
-
+     <div class="form-group">
+           <div class="col-md-2"></div>
+           <div class="col-md-6">
             <%= link_to("その他にお困りの場合はこちら",
                 {:controller => 'symptoms', :action => 'new'},
                 {:onclick=>"window.open(this.href, 'new_symptom', 'height=200, width=800');return false;" })
             %>
+           </div>
+           <div class="col-md-4"></div>
      </div>
      <div class="form-group">
       <div class="col-sm-offset-4 col-sm-4">

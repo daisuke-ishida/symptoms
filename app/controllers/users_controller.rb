@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :logged_in_user, only: [:edit, :update, :followings, :followers]
   before_action :correct_user, only: [:edit, :update]
   #before_action :check_account
-  before_action :check_timeout
+  # before_action :check_timeout
   
   def new
     @user = User.new
@@ -144,17 +144,17 @@ class UsersController < ApplicationController
   #  end
   # end
   
-  TIMEOUT = 5.minutes
+  #TIMEOUT = 60.minutes
   
-  def check_timeout
-    if current_user
-      if session[:last_access_time] >= TIMEOUT.ago
-        session[:last_access_time] = Time.current
-      else
-        session.delete(:user_id)
-        flash.alert = 'セッションがタイムアウトしました。'
-        render "sessions/new"
-      end
-    end
-  end
+  # def check_timeout
+  #  if current_user
+  #    if session[:last_access_time] >= TIMEOUT.ago
+  #      session[:last_access_time] = Time.current
+  #    else
+  #      session.delete(:user_id)
+  #      flash.alert = 'セッションがタイムアウトしました。'
+  #      render "sessions/new"
+  #    end
+  #  end
+  #end
 end

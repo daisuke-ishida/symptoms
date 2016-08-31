@@ -1,5 +1,6 @@
 <h3>お気に入り一覧</h3>
 <% if current_user.favorites.any? %>
+<%= page_entries_info @favorites %>
   <% @favorites.each do |f| %>
    <div class="row">
    <% postuser=  f.post.user %>
@@ -27,5 +28,6 @@
    </div>
   <% end %>
 <% end %>
+ <%= paginate @favorites %>
 <%= link_to "戻る", session_path(current_user.id), method: :get, class:"btn btn-primary" %>
 <%= link_to "一覧に戻る", search_user_path(current_user.id), class: "btn btn-danger" %>
