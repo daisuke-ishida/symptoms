@@ -7,7 +7,11 @@
           </h1>
             <span>
                 <% @symptoms.each do |symptom| %>
-                <%= symptom.name %>
+                  <% if current_user.symptoms.include?(symptom) %>
+                    <span class="strong"> <%= symptom.name %></span>
+                  <% else %>
+                    <span> <%= symptom.name %></span>
+                  <% end %>
                 <% end %>
             </span></br>
            <span>

@@ -18,16 +18,25 @@
     <% if @users.any? %>
         <div class="col-md-8">
         <% @users.each do |user| %>
-              <div id="users follow" class="container" style="padding-bottom: 10px">
+              <div id="users follow" class="container-fluid well" style="padding-bottom: 10px">
+                <div class="col-md-4">
                  <%= gravatar_for user %>
                  <%= user.name %></br>
-                 <%= user.age %></br>
-                 <%= user.sex %>
+                 <%= user.age %>歳</br>
+                 <%= user.sex %></br>
                  <% user.symptoms.each do |symptom| %>
                  <%= symptom.name %>
-                 <% end %>
+                 <% end %></br>
+                 <div class="action clearfix">
+                  <%= link_to "Profile", user_path(user.id), class: "btn btn-info" %>
+                 </div>
+                </div>
+                 <div class="col-md-6 well">
+                    <% user.posts.order(created_at: :desc).limit(1).each do |p| %>
+                    <%= p.content %>
+                    <% end %>
+                 </div>
               </div>
-              <%= link_to "Profile", user_path(user.id), class: "btn btn-primary" %>
         <% end %>
         </div>
     <% end %>

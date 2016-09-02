@@ -27,9 +27,14 @@ class UsersController < ApplicationController
   end
   
   def show
+   
     @user = User.find(params[:id])
     @posts = @user.posts.order(created_at: :desc)
     @symptoms = @user.symptoms
+    
+    # my_symptoms = current_user.symptoms
+     
+   
   end
   
   def edit
@@ -49,11 +54,13 @@ class UsersController < ApplicationController
   def followings
     @user = User.find(params[:id])
     @users = @user.following_users(params[:followed_id])
+    #@users.delete(@user.id)
   end
   
   def followers
     @user = User.find(params[:id])
     @users = @user.follower_users(params[:follower_id])
+    #@users.delete(@user.id)
   end
   
   def search
@@ -83,10 +90,7 @@ class UsersController < ApplicationController
   end
   
   def pickup
-  #      @q = Symptom.ransack(params[:id])
-  #      @symptoms = @q.result
-         
-    #     my_symptoms = @symptoms.pluck(:id)
+  
         my_symptoms = params[:symptom][:ownerships]
         my_symptoms.delete("") #投稿フォームから空文字列がゴミで入るので除去Sym
         my_symptoms.compact!
@@ -108,18 +112,7 @@ class UsersController < ApplicationController
        User.find(@target).index_by(&:id).slice(*@target).values
        ).page(params[:page]).per(10)
      end
-     
-     
-  #   target = Array.new
-  #      other_symptoms.each do |e|
-  #       target = target + Ownership.where(symptom_id: e).pluck(:user_id)
-  #       @target = target.group_by(&:to_i).sort_by{|_,v|-v.size}.map(&:first)
-         
-  #    @users =Kaminari.paginate_array(
-  #      User.find(@target).index_by(&:id).slice(*@target).values
-  #     ).page(params[:page]).per(10)
-  #    end
-    end
+  end
 
   
   private
