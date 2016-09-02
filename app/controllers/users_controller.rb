@@ -29,7 +29,7 @@ class UsersController < ApplicationController
   def show
    
     @user = User.find(params[:id])
-    @posts = @user.posts.order(created_at: :desc)
+    @posts = Kaminari.paginate_array(@user.posts.order(created_at: :desc)).page(params[:page]).per(10)
     @symptoms = @user.symptoms
     
     # my_symptoms = current_user.symptoms
@@ -53,13 +53,21 @@ class UsersController < ApplicationController
   
   def followings
     @user = User.find(params[:id])
-    @users = @user.following_users(params[:followed_id])
+    @users = Kaminari.paginate_array(@user.following_users(params[:followed_id])).page(params[:page]).per(10)
+    @symptom = @user.symptoms
+    @users.each do |u|
+    @symptoms = u.symptoms
+    end
     #@users.delete(@user.id)
   end
   
   def followers
     @user = User.find(params[:id])
-    @users = @user.follower_users(params[:follower_id])
+    @users =  Kaminari.paginate_array(@user.follower_users(params[:follower_id])).page(params[:page]).per(10)
+     @symptom = @user.symptoms
+     @users.each do |u|
+    @symptoms = u.symptoms
+    end
     #@users.delete(@user.id)
   end
   

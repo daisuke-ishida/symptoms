@@ -40,7 +40,7 @@ class User < ActiveRecord::Base
     end
     
     def feed_items
-       Post.where(user_id: following_user_ids+[self.id])
+       Post.where(user_id: [self.id])
     end
     
     

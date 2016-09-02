@@ -4,12 +4,16 @@
             <h1>
                 <%= gravatar_for @user %>
                 <%= @user.name %></br>
-                <%= @user.age %></br>
+                <%= @user.age %>歳</br>
                 <%= @user.sex %></br>
             </h1>
             <span>
-                <% @user.symptoms.each do |symptom| %>
-                <%= symptom.name %>
+               <% @symptom.each do |symptom| %>
+                  <% if current_user.symptoms.include?(symptom) %>
+                    <span class="strong"> <%= symptom.name %></span>
+                  <% else %>
+                    <span> <%= symptom.name %></span>
+                  <% end %>
                 <% end %>
             </span>
         </section>
@@ -17,6 +21,7 @@
     
     <% if @users.any? %>
         <div class="col-md-8">
+             <%= page_entries_info @users %>
         <% @users.each do |user| %>
               <div id="users follow" class="container-fluid well" style="padding-bottom: 10px">
                 <div class="col-md-4">
@@ -24,9 +29,13 @@
                  <%= user.name %></br>
                  <%= user.age %>歳</br>
                  <%= user.sex %></br>
-                 <% user.symptoms.each do |symptom| %>
-                 <%= symptom.name %>
-                 <% end %></br>
+                 <% @symptoms.each do |symptom| %>
+                  <% if current_user.symptoms.include?(symptom) %>
+                    <span class="strong"> <%= symptom.name %></span>
+                  <% else %>
+                    <span> <%= symptom.name %></span>
+                  <% end %>
+                <% end %>
                  <div class="action clearfix">
                   <%= link_to "Profile", user_path(user.id), class: "btn btn-info" %>
                  </div>
@@ -38,6 +47,7 @@
                  </div>
               </div>
         <% end %>
+         <%= paginate @users %>
         </div>
     <% end %>
  </div>

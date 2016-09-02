@@ -27,9 +27,11 @@
     </aside>
     <div class="col-md-8">
         <% if @user.posts.any? %>
-        <h3>Post (<%= @user.posts.count %>)</h3>
+        <h3>"投稿" (<%= @user.posts.count %>)</h3>
         <ol class="post">
+            <%= page_entries_info @posts %>
             <%= render @posts %>
+            <%= paginate @posts %>
         </ol>
         <% end %>
     </div>
