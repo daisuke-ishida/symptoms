@@ -102,17 +102,31 @@ class UsersController < ApplicationController
         my_symptoms = params[:symptom][:ownerships]
         my_symptoms.delete("") #投稿フォームから空文字列がゴミで入るので除去Sym
         my_symptoms.compact!
+        @my_symptoms = my_symptoms.map(&:to_i)
+        
+        
         
         other_symptoms = []
         if request.post? then
+          
           a = params[:symptom][:name]
-          other_symptoms = Symptom.where('name like ?',"%#{a}%").pluck(:id)
-        end
+          
+          if a.present?
+            @other_symptom = Symptom.where('name like ?',"%#{a}%")
+            other_symptoms = @other_symptom.pluck(:id)
+         # else
+          #  other_symptoms = nil
+        #  end
+     end
+   end
+        @pickup_symptoms = @my_symptoms.push(other_symptoms).flatten!
+        @pickup_symptoms.uniq!
+        
         target = Array.new
-        my_symptoms.push(other_symptoms).flatten!.each do |e|
+         my_symptoms.push(other_symptoms).flatten!.each do |e|
          target = target + Ownership.where(symptom_id: e).pluck(:user_id)
          @target = target.group_by(&:to_i).sort_by{|_,v|-v.size}.map(&:first)
-
+       
     #targetは症状を持っている人IDの配列
     
     
@@ -158,4 +172,5 @@ class UsersController < ApplicationController
   #    end
   #  end
   #end
+  
 end

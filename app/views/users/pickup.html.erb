@@ -1,14 +1,18 @@
+<% if @users == nil %>
+    render ''
+<% else %>
+
 <div class="container">
-    <% my_symptoms = current_user.symptoms %>
+   
     <%= page_entries_info @users %>
      <div class="container-inner inner-default clearfix">
          <% @users.each do |user| %>
            <%= gravatar_for(user) %>
            <%= user.name %></br>
-           <%= user.age %></br>
+           <%= user.age %>歳</br>
            <%= user.sex %></br>
            <% user.symptoms.each do |symptom| %>
-             <%if my_symptoms.include?(symptom) %>
+             <% if @pickup_symptoms.include?(symptom.id) %>
                 <span class="strong"> <%= symptom.name %></span>
              <% else %>
                 <span> <%= symptom.name %></span>
@@ -24,3 +28,5 @@
 <div>
      <%= link_to "戻る", session_path(current_user.id), method: :get, class: "btn btn-primary" %>
 </div>
+<% end %>
+

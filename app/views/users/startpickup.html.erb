@@ -1,15 +1,32 @@
-<%= form_for(@symptom, url:{action:"pickup", controller:"users"}, html:{class:"form-horizontal"}) do |f| %>
-     <div class="form-group">
-           <%= f.label :symptoms, "どんな症状をお探しですか？" %>
-            <%= f.collection_check_boxes(:ownerships, Symptom.all,:id,:name) do |s| %>
+<div class="container-fluid">
+  <div class="form-group">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+          <%= form_for(@symptom, url:{action:"pickup", controller:"users"}, html:{class:"form-horizontal"}) do |f| %>
+          <%= f.label :symptoms, "どんな症状をお探しですか？" %>
+          <%= f.collection_check_boxes(:ownerships, Symptom.all,:id,:name) do |s| %>
                 <%= s.label { s.check_box + s.text } %>
-            <% end %>
+          <% end %>
     </div>
-    <div class="form-group">
-        <%= f.label :name, "症状名" %>
-        <%= f.text_field :name, class: "form-control" %>
+    <div class="col-md-2"></div>
+  <div class="form-group">
+    <dic class="col-md-4 text-right">
+          <%= f.label :name, "症状名" %>
     </div>
+    <div class="col-md-4">
+          <%= f.text_field :name, class: "form-control" %>
+    </div>
+    <div class="col-md-4"></div>
+  </div>
+  <div class="form-group">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+          <%= f.submit "検索", class: "btn btn-primary" %>
+    </div>
+    <div class="col-md-4"></div>
+
+       
    
-    <%= f.submit "検索", class: "btn btn-primary" %>
 <% end %>
+</div>
 <%= link_to "戻る", session_path(current_user.id), method: :get, class: "btn btn-primary" %>
