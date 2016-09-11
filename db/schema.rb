@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160827141022) do
+ActiveRecord::Schema.define(version: 20160911050545) do
 
   create_table "favorites", force: :cascade do |t|
     t.integer  "user_id"
@@ -75,9 +75,10 @@ ActiveRecord::Schema.define(version: 20160827141022) do
     t.string   "email"
     t.string   "password_digest"
     t.string   "symptoms"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.string   "image"
+    t.string   "auto_login_token"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

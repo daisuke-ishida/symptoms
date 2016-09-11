@@ -1,7 +1,7 @@
 <h1>Log in</h1>
 
 <div class="row">
-    <div class="col-md-6 col-md-offset-3">
+    　　<div class="col-md-6 col-md-offset-3">
         <%= form_for(:session, url: login_path) do |f| %>
         
           <%= f.label :"メールアドレス" %>
@@ -9,6 +9,11 @@
           
           <%= f.label :"パスワード", style: "padding-top:20px" %>
           <%= f.password_field :password, class: 'form-control' %>
+          
+          <form class="form-inline text-left">
+              <%= f.label :remember_me, "次回から自動ログイン", style: "padding-top: 20px" %>
+              <%= f.check_box :remember_me %>
+          </form>
           
       
           <%= f.submit "Log in", class: "btn btn-primary btn-lg", style: "margin-top:40px" %>

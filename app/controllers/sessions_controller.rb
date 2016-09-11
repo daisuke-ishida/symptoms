@@ -9,6 +9,10 @@ before_action :correct_user, only:[:show]
     @user = User.find_by(email: params[:session][:email].downcase)
     if @user && @user.authenticate(params[:session][:password])
       session[:user_id] = @user.id
+      if params[:remember_me]
+        cookies.permanent.signed[:user_id] = user.id
+        cookies.permanent.signed[:auto_login_token] = user.auto_login_token
+      end
       session[:last_access_time] = Time.current
       flash[:info] = "loged in as #{@user.name}"
       render 'show'

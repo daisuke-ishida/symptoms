@@ -25,6 +25,20 @@ class User < ActiveRecord::Base
     has_many :favorites, foreign_key: "user_id", dependent: :destroy
     has_many :favposts, through: :favorites, source: :_ollowedpost
     
+    require"bcrypt"
+    attr_accessor :password
+    before_save do
+        self.password_digest = BCrypt::Password.create(password)
+    end
+    
+    before_create do
+        self.auto_login_token = SecureRandom.hex
+    end
+    
+    def authenticate(unencrypted_password)
+        BCrypt::Password.new(password_digest) == unencrypted_password
+    end
+    
     def follow(other_user)
         following_relationships.find_or_create_by(followed_id: other_user.id)
     end
