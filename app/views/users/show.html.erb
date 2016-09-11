@@ -22,13 +22,15 @@
              <%= @user.follower_users.count %>
              <%= link_to "フォロワー", followers_user_path %>
            </span>
-            <%= render 'follow_form' if logged_in? %>
         </section>
+         <div class="col-md-3">
+            <%= render 'follow_form' if logged_in? %>
+           </div>
     </aside>
     <div class="col-md-8">
         <% if @user.posts.any? %>
         <h3>"投稿" (<%= @user.posts.count %>)</h3>
-        <ol class="post">
+        <ul class="post list-unstyled">
             <%= page_entries_info @posts %>
             <%= render @posts %>
             <%= paginate @posts %>

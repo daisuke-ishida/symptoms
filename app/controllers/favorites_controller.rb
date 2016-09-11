@@ -1,5 +1,7 @@
 class FavoritesController < ApplicationController
     
+    before_action :correct_user, only: [:create, :show, :destroy]
+    
     # post_id と user_idがパラメータで渡ってくる
     def create
         @favpost = Post.find(params[:post_id])
@@ -22,5 +24,13 @@ class FavoritesController < ApplicationController
         end
     end
     
+    private
+    
+      def correct_user
+        @user = User.find(params[:id])
+        if @user !=current_user
+          redirect_to root_url
+        end
+      end
 end
 

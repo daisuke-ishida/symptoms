@@ -1,4 +1,4 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
+<header class="navbar navbar-fixed-top navbar-inverse" style="background-color: white">
     <div class="container">
         <%= link_to "Let's share the health", "#", id: "logo" %>
         <nav>
@@ -24,6 +24,7 @@
               <% else %>
                 <li><%= link_to "Log in", login_path %></li>
               <% end %>
+               <%= link_to "お問い合わせ", inquiry_path %>
             </ul>
         </nav>
     </div>

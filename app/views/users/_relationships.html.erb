@@ -22,6 +22,7 @@
     <% if @users.any? %>
         <div class="col-md-8">
              <%= page_entries_info @users %>
+        <table class="table">
         <% @users.each do |user| %>
               <div id="users follow" class="container-fluid well" style="padding-bottom: 10px">
                 <div class="col-md-4">
@@ -40,13 +41,16 @@
                   <%= link_to "Profile", user_path(user.id), class: "btn btn-info" %>
                  </div>
                 </div>
-                 <div class="col-md-6 well">
+                 <% if user.posts.any? %>
+                 <div class="col-md-6 well" style="background-color: white">
                     <% user.posts.order(created_at: :desc).limit(1).each do |p| %>
                     <%= p.content %>
                     <% end %>
                  </div>
+                 <% end %>
               </div>
         <% end %>
+        </table>
          <%= paginate @users %>
         </div>
     <% end %>

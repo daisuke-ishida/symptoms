@@ -1,33 +1,37 @@
-<h3>お気に入り一覧</h3>
+<h3 class="page-header">お気に入り一覧</h3>
 <% if current_user.favorites.any? %>
 <%= page_entries_info @favorites %>
+<ul class="favorite list-unstyled">
   <% @favorites.each do |f| %>
-   <div class="row">
-   <% postuser=  f.post.user %>
-   <div class="col-md-2"><%= postuser.name %></div> 
-   <div class="col-md-3">
-      <%= postuser.age %>歳 <%= postuser.sex %> <br>
-      <% current_symptom = current_user.symptoms.pluck(:name) %>
-      <% postuser.symptoms.pluck(:name).each do |s| %>
-         <% if (current_symptom.include?(s)) %>
-            <span class="strong">
-         <% end %>
-         <%= s %>
-         <% if (current_symptom.include?(s) ) %>
+  <li>
+    <div class="row">
+       <% postuser=  f.post.user %>
+       <div class="col-md-1"><%= postuser.name %></div> 
+       <div class="col-md-3">
+         <%= postuser.age %>歳 <%= postuser.sex %> <br>
+         <% current_symptom = current_user.symptoms.pluck(:name) %>
+         <% postuser.symptoms.pluck(:name).each do |s| %>
+           <% if (current_symptom.include?(s)) %>
+             <span class="strong">
+           <% end %>
+           <%= s %>
+           <% if (current_symptom.include?(s) ) %>
              </span>
+           <% end %>
          <% end %>
-      <% end %>
-   </div>
-   <div class="col-md-5">
-         <%= f.content %>
+       </div>
+       <div class="col-md-6">
+         <%= f.content %></br>
          <%= image_tag f.image.url %>
-   </div>
-   <div class="col-md-2">
-    <%= link_to "削除", favorite_path(f.id), method: :delete, class: "btn btn-primary" %>
-   </div>
-   </div>
-  <% end %>
+       </div>
+       <div class="col-md-2 text-right">
+           <%= link_to "削除", favorite_path(f.id), method: :delete, class: "btn btn-primary" %>
+       </div>
+       <% end %>
+    </div>
+  </li>
 <% end %>
- <%= paginate @favorites %>
+</ul>
+ <%= paginate @favorites %></br>
 <%= link_to "戻る", session_path(current_user.id), method: :get, class:"btn btn-primary" %>
 <%= link_to "一覧に戻る", search_user_path(current_user.id), class: "btn btn-danger" %>

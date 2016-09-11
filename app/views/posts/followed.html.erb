@@ -1,8 +1,9 @@
-
-お気に入りにされた状況の表示</br>
+<h3 class="page-header">お気に入りにされた状況の表示</h3></br>
 <% Time.zone = 'Asia/Tokyo' %>
 <%= page_entries_info @faved_posts %>
+<ol>
 <% @faved_posts.each do |p| %>
+<li>
   <div class="row">
     <div class="col-md-6">
       <%= p.created_at.in_time_zone.strftime("%Y-%m-%d %H:%M:%S") %>
@@ -10,10 +11,13 @@
       <%= image_tag p.image.url if p.image.url.present? %>
     </div>
     <div class="col-md-6">
-      <%= p.favusers.count %> 回お気に入り
+      <%= p.favusers.count %> 回お気に入りに登録されています。
     </div>
   </div>
+</li>
 <% end %>
+</ol>
+</div>
 <%= paginate @faved_posts %>
 <%= @count %></br>
 <%= link_to "戻る", session_path(current_user.id), class: "btn btn-primary" %>

@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
 # before_action :check_timeout
+before_action :correct_user, only:[:show]
 
   def new
   end
@@ -31,7 +32,14 @@ class SessionsController < ApplicationController
     redirect_to root_path
   end
   
- # private
+  private
+  
+  def correct_user
+        @user = User.find(params[:id])
+        if @user !=current_user
+          redirect_to root_url
+        end
+      end
   
   #TIMEOUT = 60.minutes
   

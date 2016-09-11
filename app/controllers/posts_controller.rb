@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
-    before_action :logged_in_user, only: [:create, :destroy]
+    before_action :logged_in_user, only: [:create, :destroy, :followed]
+    before_action :correct_user, only: [:create, :destroy, :followed]
     
     
     def new
@@ -44,4 +45,12 @@ class PostsController < ApplicationController
     def post_params
         params.require(:post).permit(:content, :image)
     end
+    
+    def correct_user
+        @user = User.find(params[:id])
+        if @user !=current_user
+          redirect_to root_url
+        end
+    end
+      
 end

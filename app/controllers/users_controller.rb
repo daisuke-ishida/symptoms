@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:edit, :update, :followings, :followers]
-  before_action :correct_user, only: [:edit, :update]
+  before_action :logged_in_user, only: [:edit, :update, :followings, :followers,]
+  before_action :correct_user, only: [:edit, :update, :following, :followers, :search, :pickup]
   #before_action :check_account
   # before_action :check_timeout
   
@@ -147,7 +147,7 @@ class UsersController < ApplicationController
   def correct_user
     @user = User.find(params[:id])
     if @user !=current_user
-      redirect_to root_path
+      redirect_to root_url
     end
   end
   

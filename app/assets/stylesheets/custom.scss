@@ -6,7 +6,7 @@
 body {
     padding-top: 60px;
     color: black;
-    background-color: #ddd;
+    background-color: #fff;
 }
 
 section {
@@ -63,6 +63,9 @@ p {
     padding-top: 9px;
     font-weight: bold;
     font-family: Century Gothic;
+    color: pink;
+    text-shadow: -1px 1px 0 #fff;
+  
 }
 
 #logo:hover {

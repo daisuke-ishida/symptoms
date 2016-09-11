@@ -20,11 +20,14 @@
                  <%= link_to "Profile", user_path(user.id), class: "btn btn-info" %>
                </div>
              </div>
-             <div class="col-md-6 well">
-               <% user.posts.order(created_at: :desc).limit(1).each do |p| %>
-               <%= p.content %>
-               <% end %>
-             </div>
+             <% if user.posts.any? %>
+        　　　　最近の投稿
+               <div class="col-md-6" style="background-color: #FFFFDD">
+                 <% user.posts.order(created_at: :desc).limit(1).each do |p| %>
+                 <%= p.content %>
+                 <% end %>
+               </div>
+              <% end %>
           </div>
         <% end %>
     </div>

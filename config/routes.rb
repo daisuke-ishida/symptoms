@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   
   resources :users do
     member do
-      get :followings, :followers, :search, :pickup, :favorite
+      get :followings, :followers, :search, :pickup, :favorite, :pickup_show
     end
   end
   
