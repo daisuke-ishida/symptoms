@@ -1,8 +1,18 @@
 ja:
   views:
     pagination:
-      First: "先頭"
-      Last: "末尾"
-      Previous: "前"
-      Next: "次"
+      first: "先頭"
+      last: "末尾"
+      previous: "前"
+      next: "次"
       truncate: "..."
+  helpers:    
+    page_entries_info:
+      one_page:
+        display_entries:
+      　　  zero: "%{entry_name}が存在しません"
+      　　one: "%{entry_name} <b>all %{count}</b> 1ページ目のみ"
+      　　other: "全体で<b>%{count}件 %{entry_name}"
+      more_pages:
+        display_entries: "%{entry_name} <b>%{first}&nbsp;-&nbsp;%{last}</b>までを表示中 全体で<b>%{total}</b>件"
+      
