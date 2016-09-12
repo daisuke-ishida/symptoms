@@ -5,12 +5,12 @@
 <% @faved_posts.each do |p| %>
 <li>
   <div class="row">
-    <div class="col-md-6">
-      <%= p.created_at.in_time_zone.strftime("%Y-%m-%d %H:%M:%S") %>
-      <%= p.content %>
-      <%= image_tag p.image.url if p.image.url.present? %>
+    <div class="col-md-8">
+      <%= p.content %></br>
+      <%= image_tag p.image.url if p.image.url.present? %></br>
+       <%= p.created_at.in_time_zone.strftime("%Y-%m-%d %H:%M:%S") %>に投稿
     </div>
-    <div class="col-md-6">
+    <div class="col-md-4">
       <%= p.favusers.count %> 回お気に入りに登録されています。
     </div>
   </div>
@@ -20,4 +20,6 @@
 </div>
 <%= paginate @faved_posts %>
 <%= @count %></br>
+<div class="col-md-offset-1 col-md-11">
 <%= link_to "戻る", session_path(current_user.id), class: "btn btn-primary" %>
+</div>

@@ -1,12 +1,13 @@
-<header class="navbar navbar-fixed-top navbar-inverse" style="background-color: white">
+<header class="navbar navbar-fixed-top" style="background-color: white">
     <div class="container">
         <%= link_to "Let's share the health", "#", id: "logo" %>
         <nav>
             <ul class="nav navbar-nav navbar-right">
                 <li><%= link_to "Home", root_path %></li>
                 <li><%= link_to "Help", "#" %></li>
+                <li><%= link_to "お問い合わせ", inquiry_path %></li>
               <% if logged_in? %>
-                <li><%= link_to "Log_in", "#" %></li>
+                <li><%= link_to "Log_out", logout_path, method: "delete" %></li>
                 <li class="dropkdown">
                     <a herf="#" class="dropdown-toggle" data-toggle="dropdown">
                         Account<b class="caret"></b>
@@ -24,8 +25,6 @@
               <% else %>
                 <li><%= link_to "Log in", login_path %></li>
               <% end %>
-               <%= link_to "お問い合わせ", inquiry_path %>
-            </ul>
         </nav>
     </div>
 </header>
