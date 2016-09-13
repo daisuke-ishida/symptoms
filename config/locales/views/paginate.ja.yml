@@ -10,7 +10,7 @@ ja:
     page_entries_info:
       one_page:
         display_entries:
-      　　  zero: "%{entry_name}が存在しません"
+          zero: "%{entry_name} が存在しません"
       　　one: "%{entry_name} <b>all %{count}</b> 1ページ目のみ"
       　　other: "全体で<b>%{count}件 %{entry_name}"
       more_pages:

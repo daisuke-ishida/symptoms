@@ -1,6 +1,6 @@
 class FavoritesController < ApplicationController
     
-    before_action :correct_user, only: [:create, :show, :destroy]
+    before_action :correct_user, only: [:show]
     
     # post_id と user_idがパラメータで渡ってくる
     def create
@@ -20,17 +20,17 @@ class FavoritesController < ApplicationController
     def destroy
         @favorite = Favorite.find(params[:id])
         if @favorite.destroy
-            redirect_to favorite_path
+            redirect_to favorite_path(current_user.id)
         end
     end
     
     private
     
-      def correct_user
-        @user = User.find(params[:id])
-        if @user !=current_user
-          redirect_to root_url
-        end
-      end
+    def correct_user
+    @user = User.find(params[:id])
+    if @user !=current_user
+      redirect_to root_url
+    end
+  end
+    
 end
-

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only: [:edit, :update, :followings, :followers,]
-  before_action :correct_user, only: [:edit, :update, :following, :followers, :search, :pickup]
+  before_action :correct_user, only: [:edit, :update, :following, :followers, :search,]
   #before_action :check_account
   # before_action :check_timeout
   
