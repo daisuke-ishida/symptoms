@@ -1,4 +1,5 @@
-<h1 style="margin-top:30px">投稿</h1>
+<div class="container-fluid well" style="margin-top: 80px">
+<h1 class="page-header", style="margin-top:30px">投稿</h1>
   <%= form_for(@post, html: { multipart: true }) do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
   <div class="form-horizontal", style="height: 300px">
@@ -27,6 +28,7 @@
 　    <div class="col-md-4"></div></br>
       　<%= link_to "戻る" , session_path(current_user.id), method: :get, class: "btn btn-success" %>
   <% end %>
+</div>
 
 <script type="text/javascript">
     $('#post_image').bind('change', function() {

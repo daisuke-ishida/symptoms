@@ -1,4 +1,5 @@
-<h3 class="page-header">お気に入り一覧</h3>
+<div class="container-fluid" style="margin-top: 60px">
+<h3 id="header">お気に入り一覧</h3>
 <% if current_user.favorites.any? %>
 <%= page_entries_info @favorites %>
 <ul class="favorite list-unstyled">
@@ -22,7 +23,8 @@
        </div>
        <div class="col-md-6">
          <%= f.content %></br>
-         <%= image_tag f.image.url %>
+         <%= image_tag f.image.url %></br>
+        <%= f.post.created_at.in_time_zone.strftime("%Y-%m-%d %H:%M:%S") %>に投稿
        </div>
        <div class="col-md-2 text-right">
            <%= link_to "削除", favorite_path(f.id), method: :delete, class: "btn btn-primary" %>
@@ -35,3 +37,4 @@
  <%= paginate @favorites %></br>
 <%= link_to "戻る", session_path(current_user.id), method: :get, class:"btn btn-primary" %>
 <%= link_to "一覧に戻る", search_user_path(current_user.id), class: "btn btn-danger" %>
+</div>

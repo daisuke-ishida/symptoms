@@ -1,4 +1,10 @@
 <li id="post-<%= post.id %>">
+    <% if current_user == post.user %>
+    <% else %>
+    <%= link_to gravatar_for(post.user, size: 50), post.user %>
+    <span class="user"><%= post.user.name %></span>
+    <% end %>
+  
     <span class="content">
         <%= post.content %>
     </span>
@@ -6,7 +12,7 @@
         <%= image_tag post.image.url if post.image? %>
     </span></br>
     <span class="timestamp">
-        Posted<%= time_ago_in_words(post.created_at) %>ago.
+        <%= post.created_at.in_time_zone.strftime("%Y-%m-%d %H:%M:%S") %>に投稿</br>
         <% if current_user == post.user %>
           <%= link_to "削除", post, method: :delete, 
                                       data: { confirm: "You sure?" } %>

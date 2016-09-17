@@ -211,9 +211,10 @@ ja:
     page_entries_info:
       one_page:
         display_entries:
-          zero: "%{entry_name} が存在しません"
-      　　one: "%{entry_name} <b>all %{count}</b> 1ページ目のみ"
-      　　other: "全体で<b>%{count}</b>件"
+          "全体で<b> %{count}</b>件です"
+          #zero: "%{entry_name} が存在しません"
+      　　#  one: "%{entry_name} <b>all %{count}</b> 1ページ目のみ"
+      　　#other: "全体で<b> %{count}</b>件"
       more_pages:
-        display_entries: "<b>%{first}&nbsp;-&nbsp;%{last}</b>までを表示中 全体で<b>%{total}</b>件"
+        display_entries: "全体で<b>%{total}</b>件中、<b>%{first}&nbsp;-&nbsp;%{last}</b>件を表示"
       

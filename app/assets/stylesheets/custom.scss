@@ -73,6 +73,11 @@ p {
     text-decoration: none;
 }
 
+.navbar-header .navbar-toggle .icon-bar {
+    color: blue;
+    background-color: gray;
+}
+
 /* mixins, variable, etc. */
 
 $gray-medium-light: #eaeaea;

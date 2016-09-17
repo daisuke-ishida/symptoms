@@ -55,7 +55,7 @@
      <div class="form-group">
            <div class="col-md-2"></div>
            <div class="col-md-8">
-           <%= f.label :symptoms, "どんな症状でお困りですか？" %></br>
+           <%= f.label :symptoms, "どんな症状でお困りですか？" %>
             <%= f.collection_check_boxes(:ownerships, Symptom.all,:id,:name) do |s| %>
                 <%= s.label { s.check_box + s.text } %>
             <% end %></br>
@@ -67,7 +67,7 @@
      <div class="form-group">
            <div class="col-md-2"></div>
            <div class="col-md-6">
-            <%= link_to("その他にお困りの場合はこちら",
+            その他にお困りなら<%= link_to("こちら",
                 {:controller => 'symptoms', :action => 'new'},
                 {:onclick=>"window.open(this.href, 'new_symptom', 'height=200, width=800');return false;" })
             %>
@@ -80,4 +80,3 @@
       </div>
     </div>
 <% end %>
-

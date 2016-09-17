@@ -14,7 +14,7 @@ class FavoritesController < ApplicationController
     end
     
     def show
-        @favorites = Kaminari.paginate_array(Favorite.where(user_id: current_user.id)).page(params[:page]).per(10)
+        @favorites = Kaminari.paginate_array(Favorite.where(user_id: current_user.id).order(created_at: :desc)).page(params[:page]).per(10)
     end
 
     def destroy
