@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
- before_action :check_timeout
-before_action :correct_user, only:[:show]
+ #before_action :check_timeout
+ before_action :correct_user, only:[:show]
 
   def new
   end
@@ -39,19 +39,19 @@ before_action :correct_user, only:[:show]
         if @user !=current_user
           redirect_to root_url
         end
-      end
-  
-  TIMEOUT = 5.minutes
-  
-  def check_timeout
-    if current_user
-      if session[:last_access_time] >= TIMEOUT.ago
-        session[:last_access_time] = Time.current
-      else
-        session.delete(user_id: current_user.id)
-        flash.alert = "セッションがタイムアウトしました。"
-        redirect_to 'sessions/new'
-      end
-    end
   end
+  
+  #TIMEOUT = 5.minutes
+  
+  #def check_timeout
+  #  if current_user
+  #    if session[:last_access_time] >= TIMEOUT.ago
+  #      session[:last_access_time] = Time.current
+  #    else
+  #      session.delete(user_id: current_user.id)
+  #      flash.alert = "セッションがタイムアウトしました。"
+  #      render 'sessions/new'
+  #    end
+  #  end
+  #end
 end

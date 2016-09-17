@@ -4,8 +4,13 @@
      <div class="container-inner inner-default clearfix">
          <% @users.each do |user| %>
            <div class="row well">
-             <div class="col-md-6">
+             <div class="col-md-1">
                <%= gravatar_for(user) %>
+               <div class="action clearfix">
+                 <%= link_to "Profile", user_path(user.id), class: "btn btn-info" %>
+               </div>
+             </div>
+             <div class="col-md-4">
                <%= user.name %></br>
                <%= user.age %>歳</br>
                <%= user.sex %></br>
@@ -16,9 +21,7 @@
                  <span> <%= symptom.name %></span>
                <% end %>
           　<% end %>
-               <div class="action clearfix">
-                 <%= link_to "Profile", user_path(user.id), class: "btn btn-info" %>
-               </div>
+               
              </div>
              <% if user.posts.any? %>
         　　　　最近の投稿
