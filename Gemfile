@@ -42,8 +42,6 @@ gem 'kaminari'
 
 gem 'kaminari-bootstrap'
 
-gem 'kaminari-bootstrap'
-
 # Use Unicorn as the app server
 # gem 'unicorn'
 
