@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
- #before_action :check_timeout
+ before_action :check_timeout
  before_action :correct_user, only:[:show]
 
   def new
@@ -41,17 +41,17 @@ class SessionsController < ApplicationController
         end
   end
   
-  #TIMEOUT = 5.minutes
+  TIMEOUT = 3.minutes
   
-  #def check_timeout
-  #  if current_user
-  #    if session[:last_access_time] >= TIMEOUT.ago
-  #      session[:last_access_time] = Time.current
-  #    else
-  #      session.delete(user_id: current_user.id)
-  #      flash.alert = "セッションがタイムアウトしました。"
-  #      render 'sessions/new'
-  #    end
-  #  end
-  #end
+  def check_timeout
+    if current_user
+      if session[:last_access_time] >= TIMEOUT.ago
+        session[:last_access_time] = Time.current
+      else
+        session.delete(user_id: current_user.id)
+        flash.alert = "セッションがタイムアウトしました。"
+        render 'sessions/new'
+      end
+    end
+  end
 end
