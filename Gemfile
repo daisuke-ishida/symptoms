@@ -40,8 +40,8 @@ gem 'ransack'
 
 gem 'kaminari'
 
-gem 'kaminari-bootstrap'
-
+gem 'kaminari-bootstrap', '~> 3.0.1'
+ 
 # Use Unicorn as the app server
 # gem 'unicorn'
 

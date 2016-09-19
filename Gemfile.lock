@@ -346,7 +346,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   kaminari
-  kaminari-bootstrap
+  kaminari-bootstrap (~> 3.0.1)
   mini_magick
   pry-byebug
   rails (= 4.2.6)
