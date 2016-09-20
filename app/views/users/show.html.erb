@@ -4,6 +4,7 @@
           <h1>
              <%= gravatar_for @user %>
              <%= @user.name %></br>
+             <%= @user.age %>歳</br>
           </h1>
             <span>
                 <% @symptoms.each do |symptom| %>
@@ -16,16 +17,23 @@
             </span></br>
            <span>
             <%= @user.following_users.count %>
-            <%= link_to "Followings", followings_user_path %>
+            <%= link_to "フォロー", followings_user_path %>
            </span>
            <span>
              <%= @user.follower_users.count %>
              <%= link_to "フォロワー", followers_user_path %>
            </span>
         </section>
-         <div class="col-md-3">
+         <div class="col-md-4">
             <%= render 'follow_form' if logged_in? %>
            </div>
+        <div>
+          <% if @user == current_user %>
+              <%= link_to "戻る", session_path(current_user.id), method: :get, class: "btn btn-primary" %>
+          <% else %>
+              <%= link_to "戻る", search_user_path, class: "btn btn-primary" %>
+          <% end %>
+        </div>
     </aside>
     <div class="col-md-8">
         <% if @user.posts.any? %>
@@ -37,11 +45,4 @@
         </ol>
         <% end %>
     </div>
-</div>
-<div>
-    <% if @user == current_user %>
-      <%= link_to "戻る", session_path(current_user.id), method: :get, class: "btn btn-primary" %>
-    <% else %>
-      <%= link_to "戻る", search_user_path, class: "btn btn-primary" %>
-    <% end %>
 </div>

@@ -1,5 +1,4 @@
 class SessionsController < ApplicationController
- before_action :check_timeout
  before_action :correct_user, only:[:show]
 
   def new
@@ -10,7 +9,7 @@ class SessionsController < ApplicationController
     if @user && @user.authenticate(params[:session][:password])
       session[:user_id] = @user.id
       session[:last_access_time] = Time.current
-      flash[:info] = "loged in as #{@user.name}"
+      # flash[:info] = "loged in as #{@user.name}"
       render 'show'
     else
       flash[:danger] = "invalid email/password combination"
@@ -41,17 +40,4 @@ class SessionsController < ApplicationController
         end
   end
   
-  TIMEOUT = 3.minutes
-  
-  def check_timeout
-    if current_user
-      if session[:last_access_time] >= TIMEOUT.ago
-        session[:last_access_time] = Time.current
-      else
-        session.delete(user_id: current_user.id)
-        flash.alert = "セッションがタイムアウトしました。"
-        render 'sessions/new'
-      end
-    end
-  end
 end

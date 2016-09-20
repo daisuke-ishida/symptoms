@@ -3,18 +3,24 @@
         <h2><%= @user.name %>さん、Let's share the healthにようこそ</h2>
     </div>
     <div class="row", style="height:300px; background-color: #EEFFFF;">
-        <div class="col-md-4 text-center" style="margin-top:100px">
+        <div class="col-md-3 text-center" style="margin-top:100px">
            投稿は<%= link_to "こちら", new_post_path, :id => 'choice' %>
            <p></p>
         </div>
-        <div class="col-md-4 text-center" style="margin-top: 100px">
+        <div class="col-md-3 text-center" style="margin-top: 100px">
             自分の症状から探す場合は<%= link_to "こちら", search_user_path(@user.id), :id => 'choice' %></br>
               <p></p>
             その他の症状から探す場合は<%= link_to "こちら", startpickup_path, :id => 'choice' %>
               <p></p>
              
         </div>
-        <div class="col-md-4 text-center" style="margin-top:100px">
+        <div class="col-md-3 text-center" style="margin-top: 100px">
+            <%= link_to "フォロー一覧", followings_user_path(@user.id), :id => 'choice' %></br>
+              <p></p>
+            <%= link_to "フォロワー一覧", followers_user_path(@user.id), :id => 'choice' %>
+              <p></p>
+        </div>
+        <div class="col-md-3 text-center" style="margin-top:100px">
             お気に入り一覧は<%= link_to "こちら", favorite_path(@user.id), :id => 'choice' %>
               <p></p>
             <%= link_to "お気に入られ", followed_post_path(@user.id), :id => 'choice' %>
