@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
     before_save { self.email = self.email.downcase }
+    mount_uploader :picture, PictureUploader
     validates :name, presence: true, length: { maximum: 50 }
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
     validates :age, numericality: { only_integer: true, greater_than_or_equal_to: 0 }, presence: true
@@ -8,6 +9,8 @@ class User < ActiveRecord::Base
                       format: { with: VALID_EMAIL_REGEX },
                       uniqueness: { case_sensitive: false }
     validates :symptoms, length: { maximum: 20 }
+    validate :picture_size
+    
     has_secure_password
     has_many :posts
     has_many :following_relationships, class_name: "Relationship",
@@ -46,6 +49,14 @@ class User < ActiveRecord::Base
     
     def own(user, symp_id)
         Ownership.find_or_create_by(user_id: user.id, symptom_id: symp_id)
+    end
+    
+    private
+    
+    def picture_size
+      if picture.size > 5.megabytes
+        errors.add(:picture, "should be less than 5MB")
+      end
     end
     
    # def active?

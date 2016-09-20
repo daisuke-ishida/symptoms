@@ -8,7 +8,11 @@
          <% @users.each do |user| %>
          <div class="row well">
             <div class="col-md-1">
-              <%= gravatar_for(user) %>
+              <% if user.picture? %>
+                <%= image_tag user.picture.url, :size =>'80x80'%>
+              <% else %>
+                <%= gravatar_for(user) %>
+              <% end %>
               <div class="action clearfix">
                 <%= link_to "Profile", user_path(user.id), class: "btn btn-info" %>
               </div>
