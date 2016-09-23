@@ -110,7 +110,7 @@ class UsersController < ApplicationController
         if request.post? then
           
           a = params[:symptom][:name]
-          
+          m
           if a.present?
             @other_symptom = Symptom.where('name like ?',"%#{a}%")
             other_symptoms = @other_symptom.pluck(:id)

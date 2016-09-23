@@ -12,10 +12,14 @@
           </h1>
             <span>
                 <% @symptoms.each do |symptom| %>
-                  <% if current_user.symptoms.include?(symptom) %>
-                    <span class="strong"> <%= symptom.name %></span>
+                  <% if logged_in? %>
+                    <% if current_user.symptoms.include?(symptom) %>
+                      <span class="strong"> <%= symptom.name %></span>
+                    <% else %>
+                      <span> <%= symptom.name %></span>
+                    <% end %>
                   <% else %>
-                    <span> <%= symptom.name %></span>
+                    <%= symptom.name %>
                   <% end %>
                 <% end %>
             </span></br>
@@ -29,7 +33,11 @@
            </span>
         </section>
          <div class="col-md-4">
-            <%= render 'follow_form' if logged_in? %>
+             <% if logged_in? %>
+             <%= render 'follow_form' %>
+             <% else %>
+             <%= link_to "Log_in", login_path, class: "btn btn-primary" %>
+             <% end %>
            </div>
         <div>
           <% if @user == current_user %>
