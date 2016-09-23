@@ -1,10 +1,18 @@
 <li id="post-<%= post.id %>">
-    <% if current_user == post.user %>
+    <% if @user == post.user %>
+    <% elsif current_user == post.user %>
     <% else %>
-    <%= link_to gravatar_for(post.user, size: 50), post.user %>
-    <span class="user"><%= post.user.name %></span>
+         <% if post.user.picture? %>
+             <%= image_tag post.user.picture.url, :size =>'50x50'%>
+         <% else %>
+             <%= link_to gravatar_for(post.user, size: 50), post.user %>
+         <% end %>
     <% end %>
-  
+    <% if @user == post.user %>
+    <% elsif current_user == post.user %>
+    <% else %>
+      <span class="user"><%= post.user.name %></span></br>
+    <% end %>
     <span class="content">
         <%= post.content %>
     </span></br>

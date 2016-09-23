@@ -1,6 +1,7 @@
 class FavoritesController < ApplicationController
     
     before_action :correct_user, only: [:show]
+    before_action :check_timeout
     
     # post_id と user_idがパラメータで渡ってくる
     def create
@@ -32,5 +33,19 @@ class FavoritesController < ApplicationController
       redirect_to root_url
     end
   end
+    
+     TIMEOUT = 60.minutes
+  
+   def check_timeout
+    if current_user
+      if session[:last_access_time] >= TIMEOUT.ago
+        session[:last_access_time] = Time.current
+      else
+        session.delete(user_id: current_user.id)
+        flash[:alert] = "セッションがタイムアウトしました。"
+        redirect_to new_session_path
+      end
+    end
+   end
     
 end

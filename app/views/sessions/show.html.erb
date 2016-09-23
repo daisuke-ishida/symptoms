@@ -7,13 +7,13 @@
            投稿は<%= link_to "こちら", new_post_path, :id => 'choice' %>
            <p></p>
         </div>
-        <div class="col-md-3 text-center" style="margin-top: 100px">
+          <div class="col-md-3 text-center" style="margin-top: 100px">
             自分の症状から探す場合は<%= link_to "こちら", search_user_path(@user.id), :id => 'choice' %></br>
               <p></p>
             その他の症状から探す場合は<%= link_to "こちら", startpickup_path, :id => 'choice' %>
               <p></p>
              
-        </div>
+          </div>
         <div class="col-md-3 text-center" style="margin-top: 100px">
             <%= link_to "フォロー一覧", followings_user_path(@user.id), :id => 'choice' %></br>
               <p></p>
@@ -27,4 +27,11 @@
               <p></p>
         </div>
     </div>
+</div>
+
+<div class="container">
+  <div class="col-md-3", style="height: 100px; background-color: #FFEBCD"></div>
+   <div class="col-md-3", style="height: 100px; background-color: #EEFFFF"></div>
+    <div class="col-md-3", style="height: 100px; background-color: #FFE4B5"></div>
+     <div class="col-md-3", style="height: 100px; background-color: #E6E6FA"></div>
 </div>
