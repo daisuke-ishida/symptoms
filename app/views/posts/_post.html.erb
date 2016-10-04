@@ -20,7 +20,7 @@
         <%= image_tag post.image.url if post.image? %>
     </span></br>
     <span class="timestamp">
-        <%= post.created_at.in_time_zone.strftime("%Y-%m-%d %H:%M:%S") %>に投稿</br>
+        <%= post.created_at.in_time_zone.strftime("%Y-%m-%d %H:%M:%S") %></br>
         <% if current_user == post.user %>
           <%= link_to "削除", post, method: :delete, 
                                       data: { confirm: "You sure?" } %>

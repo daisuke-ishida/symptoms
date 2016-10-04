@@ -1,34 +1,45 @@
-<div class="container-fluid" style="margin-top: 60px">
+<div class="container-fluid" style="margin-top: 50px">
 <% if logged_in? %>
 <div class="row">
     <aside class="col-md-4">
+        <div class="nav nav-tabs nav-stacked fixed-sidebar" style="z-index: 20; background-color: white">
         <section class="user_info"> 
             <%= render 'shared/user_info' %>
         </section>
         <section class="post_form" %>
             <%= render 'shared/post_form' %>
-            <%= link_to "TOPへ", session_path(current_user.id), method: :get, class: "btn btn-primary" %>
+        </section>
+           <%= render 'shared/btn' %>
+        </div>
     </aside>
-    <div class="col-md-8">
+    <div class="col-md-8" style="z-index=10">
         <h3>Post Feed</h3>
         <%= render 'shared/feed' %>
     </div>
 </div>
 <% else %>
+
   <div class="container-fluid" style="margin-top: 40px">
-      <div class="col-md-12" style="background-color:#EEEEEE; height: 250px">
-          <h1 style="margin-top: 50px", id="page">Let' s Share The Health!</h1>
-          <h2>健康の悩みをシェアしてみませんか？</br>
-              あなたと同じ悩みを持った人がきっといます。
-          </h2>
+      <div>
+      <%= image_tag "e48m_5511.jpg" %>
       </div>
+         <div class="col-md-12">
+             <h1 style="margin-top: 50px", id="page">Let' s Share The Health!</h1>
+             <h3 id="page">健康の悩みをシェアしてみませんか？</br>
+                  あなたと同じ悩みを持った人がきっといます。
+             </h3>
+         </div>
   </div>
-  <div class="container-fluid well" style="margin-top: 20px; height: 150px">
-      <div class="col-md-offset-2 col-md-4">
-          <h3 id="page">新規登録は<%= link_to "こちら", signup_path %></h3></br>
+  <div class="row">
+      <div class="col-md-offset-2 col-md-4", style="margin-top: 20px; height: 150px; background-color: #DBFF71">
+        <div class="col-md-12">
+          <h3 id="title">新規登録は<%= link_to "こちら", signup_path %></h3>
+        </div>
       </div>
-      <div class="col-md-4 col-md-offset-2">
-          <h3>ログインは<%= link_to "こちら", login_path %></h3></br>
+      <div class="col-md-4 col-offset-md-2", style="margin-top: 20px; height: 150px; background-color: #FFD5EC">
+        <div class="col-md-12">
+          <h3 id="title">ログインは<%= link_to "こちら", login_path %></h3>
+        </div>
       </div>
   </div>
 <% end %>

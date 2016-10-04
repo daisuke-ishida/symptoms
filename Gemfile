@@ -41,7 +41,9 @@ gem 'ransack'
 gem 'kaminari'
 
 gem 'kaminari-bootstrap', '~> 3.0.1'
- 
+
+gem 'responsive_images'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 

@@ -9,10 +9,10 @@
     <div class="col-md-8">
       <%= p.content %></br>
       <%= image_tag p.image.url if p.image.url.present? %></br>
-       <%= p.created_at.in_time_zone.strftime("%Y-%m-%d %H:%M:%S") %>に投稿
+       <%= p.created_at.in_time_zone.strftime("%Y-%m-%d %H:%M:%S") %>
     </div>
     <div class="col-md-4">
-      <%= p.favusers.count %> 回お気に入りに登録されています。
+      <%= p.favusers.count %> 回お気に入り
     </div>
   </div>
 </li>
@@ -24,4 +24,7 @@
 </div>
 <div class="col-md-offset-1 col-md-11">
 <%= link_to "戻る", session_path(current_user.id), class: "btn btn-primary" %>
+</div>
+<div>
+  <%= render 'shared/btn' %>
 </div>

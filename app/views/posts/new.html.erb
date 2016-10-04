@@ -6,7 +6,7 @@
     <div class="col-md-2"></div>
     <div class="field col-md-8">
       <%= f.label :"メッセージ" %>
-      <%= f.text_area :content, class: "input-mysize", placeholder: "" %>
+      <%= f.text_area :content, placeholder: "" %>
     </div>
     <div class="col-md-2"></div>
   </div>
@@ -28,6 +28,9 @@
 　    <div class="col-md-4"></div></br>
       　<%= link_to "戻る" , session_path(current_user.id), method: :get, class: "btn btn-success" %>
   <% end %>
+  <div>
+    <%= render 'shared/btn' %>
+  </div>
 </div>
 
 <script type="text/javascript">

@@ -10,6 +10,7 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ 
  *= require_tree .
  *= require_self
  */
@@ -18,3 +19,74 @@ span.strong {
     font-weight: 800;
     font-style:italic;
 }
+
+html, body {
+    height: 100%;
+}
+
+div#wrap {
+    min-height: 100%;
+    height: auto;
+    margin: 0 auto -60px;
+    padding: 0 0 60px;
+}
+
+div#footer {
+    height: 60px;
+    background-color: transparent; 
+    text-align: right;
+}
+
+ /*
+ * Side navigation
+ *
+ * Scrollspy and affixed enhanced navigation to highlight sections and secondary
+ * sections of docs content.
+ */
+ 
+ /* By default it's not affixed in mobile views, so undo that */
+ 
+ body {
+     padding-top: 60px;
+ }
+ 
+ .fixed-sidebar {
+     width: 220px;
+     position: fixed;
+ }
+ 
+ 
+ .bs-sidebar.affix {
+     position: static;
+ }
+ 
+ @media (min-width: 1200px) {
+     body {
+         padding-top: 50px;
+     }
+     .fixed-sidebar {
+         width: auto;
+     }
+     }
+     
+ @media (min-width: 768px) and (max-width: 979px) {
+     body {
+         padding-top: 50px;
+     }
+     .fixed-sidebar {
+         width: auto;
+     }
+ }
+ 
+  @media (max-width: 767px) {
+      body {
+         padding-top: 50px;
+     }
+     .fixed-sidebar {
+         position: fixed;
+         width: auto;
+     }
+  }
+      
+ 
+   

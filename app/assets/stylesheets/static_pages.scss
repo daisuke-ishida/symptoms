@@ -6,11 +6,48 @@
 
 #page {
   color: black;
+  text-align: center;
   text-shadow: -2px 2px 0 #fff;
 }
 
-h3 {
-   color: #cdcdcd;
-   text_shadow: -10px 10px 0 #fff;
+#title {
+    color: black;
+    text-align: center;
+    margin-top: 60px;
 }
 
+
+ /*
+ * Side navigation
+ *
+ * Scrollspy and affixed enhanced navigation to highlight sections and secondary
+ * sections of docs content.
+ */
+ 
+ /* By default it's not affixed in mobile views, so undo that */
+ .bs-sidebar.affix {
+     position: static;
+ }
+ 
+ @media (min-width: 992px) {
+     .bs-sidebar .nav > .active > ul {
+         display: block;
+     }
+     /* Widen the fixed sidebar */
+     .bs-sidebar.affix,
+     .bs-sidebar.affix-bottom {
+         width: 213px;
+     }
+     .bs-sidebar.affix {
+         position: fixed; /* undo the static from mobile first approach */
+         top: 80px;
+     }
+     .bs-sidebar.affix-bottom {
+         position: absolute; /* undo the static from mobile first approach */
+     }
+     .bs-sidebar.affix-bottom .bs-sidenav
+     .bs-sidebar.affix .bs-sidenav {
+         margin-top: 0;
+         margin-bottom: 0;
+     }
+ }

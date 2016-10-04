@@ -1,13 +1,23 @@
+<div class="container-fluid" style="margin-top: 50px">
+<div class="row">
+    <aside class="col-md-2">
+        <div class="sidebar-nav affix" role="complementary">
+        <ul class="nav">
+  
+    <%= render 'shared/btn' %>
+  　　</ul>
+  　　</div>
+</aside>
+<div class="col-md-9">
 <% if @users == nil %>
     <h1 style="margin-top: 100px">"お探しのユーザーは見つかりません。"</h1>
 <% else %>
-<div class="container" style="margin-top: 30px">
     <% my_symptoms = current_user.symptoms %>
     <%= page_entries_info @users %>
      <div class="container-inner inner-default clearfix">
          <% @users.each do |user| %>
          <div class="row well">
-            <div class="col-md-1">
+            <div class="col-md-2">
               <% if user.picture? %>
                 <%= image_tag user.picture.url, :size =>'80x80'%>
               <% else %>
@@ -43,6 +53,7 @@
     <%= paginate @users %>
 </div>
 <% end %>
-<div>
-     <%= link_to "戻る", session_path(current_user.id), method: :get, class: "btn btn-primary" %>
+</div>
+
+</div>
 </div>

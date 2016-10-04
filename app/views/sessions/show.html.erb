@@ -1,37 +1,42 @@
 <div class="container">
     <div class="jumbotron  background-size:cover;" style="margin-top: 60px">
-        <h2><%= @user.name %>さん、Let's share the healthにようこそ</h2>
+        <h2 id="welcome"><%= @user.name %>さん、Let's share the healthにようこそ</h2>
     </div>
-    <div class="row", style="height:300px; background-color: #EEFFFF;">
-        <div class="col-md-3 text-center" style="margin-top:100px">
-           投稿は<%= link_to "こちら", new_post_path, :id => 'choice' %>
-           <p></p>
+       <div class="row">
+         <div class="col-xs-12 col-md-3", style="height: 200px; background-color: #FFEBCD">
+           <div class="col-md-12 text-center" style="margin-top:50px">
+               投稿は<%= link_to "こちら", new_post_path, :id => 'choice' %>
+               <p></p>
+           </div>
+         </div>
+         <div class="col-xs-12 col-md-3", style="height: 200px; background-color: #EEFFFF">
+           <div class="col-md-12 text-center" style="margin-top: 50px">
+             自分の症状から探す場合は<%= link_to "こちら", search_user_path(@user.id), :id => 'choice' %></br>
+              <p></p>
+             他の症状から探す場合は<%= link_to "こちら", startpickup_path, :id => 'choice' %>
+              <p></p>
+           </div>
+         </div>
+         <div class="col-xs-12 col-md-3", style="height: 200px; background-color: #FFE4B5">
+           <div class="col-md-12 text-center" style="margin-top: 50px">
+             フォローは<%= link_to "こちら", followings_user_path(@user.id), :id => 'choice' %></br>
+              <p></p>
+             フォロワーは<%= link_to "こちら", followers_user_path(@user.id), :id => 'choice' %>
+              <p></p>
+           </div>
         </div>
-          <div class="col-md-3 text-center" style="margin-top: 100px">
-            自分の症状から探す場合は<%= link_to "こちら", search_user_path(@user.id), :id => 'choice' %></br>
-              <p></p>
-            その他の症状から探す場合は<%= link_to "こちら", startpickup_path, :id => 'choice' %>
-              <p></p>
-             
-          </div>
-        <div class="col-md-3 text-center" style="margin-top: 100px">
-            <%= link_to "フォロー一覧", followings_user_path(@user.id), :id => 'choice' %></br>
-              <p></p>
-            <%= link_to "フォロワー一覧", followers_user_path(@user.id), :id => 'choice' %>
-              <p></p>
-        </div>
-        <div class="col-md-3 text-center" style="margin-top:100px">
+        <div class="col-xs-12 col-md-3", style="height: 200px; background-color: #E6E6FA">
+          <div class="col-md-12 text-center" style="margin-top:50px">
             お気に入り一覧は<%= link_to "こちら", favorite_path(@user.id), :id => 'choice' %>
               <p></p>
-            <%= link_to "お気に入られ", followed_post_path(@user.id), :id => 'choice' %>
+            お気に入られ一覧は<%= link_to "こちら", followed_post_path(@user.id), :id => 'choice' %>
               <p></p>
+          </div>
         </div>
     </div>
 </div>
 
-<div class="container">
-  <div class="col-md-3", style="height: 100px; background-color: #FFEBCD"></div>
-   <div class="col-md-3", style="height: 100px; background-color: #EEFFFF"></div>
-    <div class="col-md-3", style="height: 100px; background-color: #FFE4B5"></div>
-     <div class="col-md-3", style="height: 100px; background-color: #E6E6FA"></div>
-</div>
+<div class="col-md-3", style="height: 100px; background-color: #FF8C00"></div>
+<div class="col-md-3", style="height: 100px; background-color: #FFA500"></div>
+<div class="col-md-3", style="height: 100px; background-color: #F4A460"></div>
+<div class="col-md-3", style="height: 100px; background-color: #E6E6FA"></div>

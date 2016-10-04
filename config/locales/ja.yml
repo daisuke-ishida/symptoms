@@ -216,5 +216,5 @@ ja:
       　　#  one: "%{entry_name} <b>all %{count}</b> 1ページ目のみ"
       　　#other: "全体で<b> %{count}</b>件"
       more_pages:
-        display_entries: "全部で<b>%{total}</b>件中、<b>%{first}&nbsp;-&nbsp;%{last}</b>件を表示"
+        display_entries: "<b>%{total}</b>件中、<b>%{first}&nbsp;-&nbsp;%{last}</b>件を表示"
       
