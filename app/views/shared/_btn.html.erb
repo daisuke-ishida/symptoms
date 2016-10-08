@@ -1,23 +1,25 @@
- <ul class="list-group">
-         <li class="list-group-item"> <%= link_to "TOPへ", session_path(current_user.id) %></li>
+<ul class="list-inline">
+         <li class="list-group-item list-group-item-success"> <%= link_to "TOPへ", session_path(current_user.id) %></li>
      <% unless params[:action] == "search" %>
-         <li class="list-group-item"> <%= link_to "", search_user_path(current_user.id)%></li>
+         <li class="list-group-item list-group-item-success"> <%= link_to "", search_user_path(current_user.id)%></li>
      <% end %>
  
      <% unless params[:action] == "followings" %>   
-         <li class="list-group-item"> <%= link_to "フォロー",followings_user_path(current_user.id) %></li>
+         <li class="list-group-item list-group-item-success"> <%= link_to "フォロー",followings_user_path(current_user.id) %></li>
      <% end %>
  
      <% unless params[:action] == "followers" %>    
-         <li class="list-group-item"><%= link_to "フォロワー", followers_user_path(current_user.id)%></li>
+         <li class="list-group-item list-group-item-success"><%= link_to "フォロワー", followers_user_path(current_user.id)%></li>
      <% end %>
  
      <% unless params[:controller] == "favorites" %>    
-         <li class="list-group-item"><%= link_to "お気に入り", favorite_path(current_user.id)%></li>
+         <li class="list-group-item list-group-item-success"><%= link_to "お気に入り", favorite_path(current_user.id)%></li>
      <% end %>
  
      <% unless params[:action] == "followed" %>    
-         <li class="list-group-item"> <%= link_to "お気に入られ",followed_post_path(current_user.id)%></li>
+         <li class="list-group-item list-group-item-success"> <%= link_to "お気に入られ",followed_post_path(current_user.id)%></li>
      <% end %>
 </ul>
+
+
  

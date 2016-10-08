@@ -3,7 +3,7 @@
 
     <div class="form-group">
         <div class="col-md-2"></div>
-        <%= f.label :"名前", class:"col-md-2 control-label" %>
+            <%= f.label :"名前", class:"col-md-2 control-label" %>
         <div class="col-md-4">
             <%= f.text_field :name, class:"form-control" %>
         </div>
@@ -12,64 +12,68 @@
     
     <div class="form-group">
         <div class="col-md-2"></div>
-        <%= f.label :"年齢", class:"col-md-2 control-label"  %>
+            <%= f.label :"年齢", class:"col-md-2 control-label"  %>
         <div class="col-md-2">
             <%= f.text_field :age, class:"form-control" %>
         </div>
         <div class="col-md-6"></div>
     </div>  
+    
     <div class="form-group"> 
         <div class="col-md-2"></div>
-        <%= f.label :"性別", class:"col-md-2 control-label"  %>
+            <%= f.label :"性別", class:"col-md-2 control-label"  %>
         <div class="col-md-2">
             <%= f.select :sex, ['男性', '女性'], { include_blank: '選択してください' } %>
         </div>
         <div class="col-md-6"></div>
     </div>  
+    
     <div class="form-group">    
         <div class="col-md-2"></div>
-        <%= f.label :"emailアドレス", class:"col-md-2 control-label"  %>
+            <%= f.label :"emailアドレス", class:"col-md-2 control-label"  %>
         <div class="col-md-4">
             <%= f.text_field :email, class:"col-md-10 form-control" %>
             <p class="help-block">半角文字で入力してください</p>
         </div>
         <div class="col-md-4"></div>
     </div>  
+    
     <div class="form-group">    
         <div class="col-md-2"></div>
-        <%= f.label :"パスワード", class:"col-md-2 control-label"  %>
+            <%= f.label :"パスワード", class:"col-md-2 control-label"  %>
         <div class="col-md-4">
             <%= f.password_field :password, class:"form-control" %>
         </div>
         <div class="col-md-4"></div>
-    </div>   
+    </div>  
+    
     <div class="form-group">   
         <div class="col-md-2"></div>
-        <%= f.label :"パスワード確認", class:"col-md-2 control-label"  %>
+            <%= f.label :"パスワード確認", class:"col-md-2 control-label"  %>
         <div class="col-md-4">
             <%= f.password_field :password_confirmation, class:"col-md-10 form-control" %>
         </div>
         <div class="col-md-4"></div>
      </div>
      
-     <div class="form-group", style="height:80px">
-    <div class="col-md-2"></div>
-    <div class="col-md-8">
-　    <span class="picture">
-　      <%= f.label :"画像" %>
-　      <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
-　    </span>
-    </div>
-    <div class="col-md-2"></div>
-  </div>
+     <div class="form-group">
+         <div class="col-md-2"></div>
+             <%= f.label :"プロフィール画像", class: "col-md-2 control-label" %>
+         <div class="col-md-6">
+             <span class="picture">
+　                <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
+　           </span>
+         </div>
+         <div class="col-md-2"></div>
+     </div>
   
      
      <div class="form-group">
-           <div class="col-md-2"></div>
-           <div class="col-md-8">
-           <%= f.label :symptoms, "どんな症状でお困りですか？" %>
-            <%= f.collection_check_boxes(:ownerships, Symptom.all,:id,:name) do |s| %>
-                <%= s.label { s.check_box + s.text } %>
+           <div class="col-md-1"></div>
+               <%= f.label :symptoms, "あなたを悩ませているのは？" , class: "col-md-3 control-label"%>
+           <div class="col-md-6">
+               <%= f.collection_check_boxes(:ownerships, Symptom.all,:id,:name) do |s| %>
+               <%= s.label { s.check_box + s.text } %>
             <% end %></br>
             </div>
             <div class="col-md-2"></div>

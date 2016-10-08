@@ -12,18 +12,18 @@
         <nav>
             <div class="collapse navbar-collapse", id="miniNav">
             <ul class="nav navbar-nav navbar-right">
-                <li><%= link_to "Home", root_path %></li>
-                <li><%= link_to "Help", "#" %></li>
+                <li><%= link_to "ホーム", root_path %></li>
+                <li><%= link_to "ヘルプ", "#" %></li>
                 <li><%= link_to "お問い合わせ", inquiry_path %></li>
               <% if logged_in? %>
-                <li><%= link_to "Log_out", logout_path, method: "delete" %></li>
+                <li><%= link_to "ログアウト", logout_path, method: "delete" %></li>
                 <li class="dropkdown">
                     <a herf="#" class="dropdown-toggle" data-toggle="dropdown">
-                        Account<b class="caret"></b>
+                        アカウント<b class="caret"></b>
                     </a>
                 <ul class="dropdown-menu">
-                    <li><%= link_to "Profile", current_user %></li>
-                    <li><%= link_to "Edit", edit_user_path(current_user) %></li> 
+                    <li><%= link_to "プトフィール", current_user %></li>
+                    <li><%= link_to "プロフィール編集", edit_user_path(current_user) %></li> 
                 </ul>
                 </li>
               <% else %>
@@ -32,5 +32,13 @@
             </ul>
             </div>
         </nav>
+    </div></br>
+   <div id="btn">
+      <% if logged_in? %>
+        <% if params[:controller] == 'sessions' && params[:action] == 'show' %>
+        <% else %>
+            <%= render 'shared/btn' %>
+        <% end %>
+      <% end %>
     </div>
 </header>

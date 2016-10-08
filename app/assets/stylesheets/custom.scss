@@ -84,6 +84,11 @@ p {
     background-color: gray;
 }
 
+#btn {
+    float: right;
+    margin-right: 300px;
+}
+
 /* mixins, variable, etc. */
 
 $gray-medium-light: #eaeaea;

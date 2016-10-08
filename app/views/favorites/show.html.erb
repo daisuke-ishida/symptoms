@@ -45,9 +45,4 @@
 <% end %>
 </ul>
  <%= paginate @favorites %></br>
-<%= link_to "戻る", session_path(current_user.id), method: :get, class:"btn btn-primary" %>
-<%= link_to "一覧に戻る", search_user_path(current_user.id), class: "btn btn-danger" %>
-</div>
-<div>
-    <%= render 'shared/btn' %>
 </div>

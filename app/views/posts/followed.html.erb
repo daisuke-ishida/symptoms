@@ -22,9 +22,5 @@
 <%= paginate @faved_posts %>
 <%= @count %></br>
 </div>
-<div class="col-md-offset-1 col-md-11">
-<%= link_to "戻る", session_path(current_user.id), class: "btn btn-primary" %>
-</div>
-<div>
-  <%= render 'shared/btn' %>
-</div>
+
+
