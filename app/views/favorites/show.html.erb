@@ -1,3 +1,15 @@
+ <div style="margin-top: 50px" id="btn">
+      <% if logged_in? %>
+        <% if params[:controller] == 'sessions' && params[:action] == 'show' %>
+        <% elsif params[:controller] == 'sessions' && params[:action] == 'create' %>
+        <% elsif params[:controller] == 'sessions' && params[:action] == 'new' %>
+        <% else %>
+            <%= render 'shared/btn' %>
+        <% end %>
+        <% else %>
+      <% end %>
+    </div>
+
 <div class="container-fluid" style="margin-top: 60px">
 <h3 id="header">お気に入り一覧</h3>
 <% if current_user.favorites.any? %>

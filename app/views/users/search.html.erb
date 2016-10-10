@@ -1,4 +1,15 @@
 <div class="container-fluid" style="margin-top: 80px">
+     <div id="btn">
+      <% if logged_in? %>
+        <% if params[:controller] == 'sessions' && params[:action] == 'show' %>
+        <% elsif params[:controller] == 'sessions' && params[:action] == 'create' %>
+        <% elsif params[:controller] == 'sessions' && params[:action] == 'new' %>
+        <% else %>
+            <%= render 'shared/btn' %>
+        <% end %>
+        <% else %>
+      <% end %>
+    </div>
 <div class="row">
 <div class="col-md-12">
 <% if @users == nil %>

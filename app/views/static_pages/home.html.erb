@@ -1,3 +1,4 @@
+ 
 <div class="container-fluid" style="margin-top: 60px">
 <% if logged_in? %>
 <div class="row">
@@ -9,18 +10,16 @@
         <section class="post_form" %>
             <%= render 'shared/post_form' %>
         </section>
+        
     </aside>
-    <div class="col-md-8" style="z-index=10">
+    <div class="col-md-8" style="margin-top: 120px; z-index=10">
         <h3>Post Feed</h3>
         <%= render 'shared/feed' %>
     </div>
 </div>
 <% else %>
 
-  <div class="container-fluid" style="margin-top: 40px">
-      <div>
-      <%= image_tag "e48m_5511.jpg" %>
-      </div>
+  <div class="container-fluid well" style="margin-top: 40px">
          <div class="col-md-12">
              <h1 style="margin-top: 50px", id="page">Let' s Share The Health!</h1>
              <h3 id="page">健康の悩みをシェアしてみませんか？</br>

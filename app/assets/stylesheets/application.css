@@ -93,8 +93,8 @@ div#footer {
 
  @media (min-width: 1200px) {
      #btn {
+         position: fixed;
          float: right;
-         margin-right: 100px;
          width: auto;
      }
      }

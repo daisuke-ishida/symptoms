@@ -1,7 +1,21 @@
+
+ <div style="margin-top: 50px; z-index:30" id="btn">
+      <% if logged_in? %>
+        <% if params[:controller] == 'sessions' && params[:action] == 'show' %>
+        <% elsif params[:controller] == 'sessions' && params[:action] == 'create' %>
+        <% elsif params[:controller] == 'sessions' && params[:action] == 'new' %>
+        <% else %>
+            <%= render 'shared/btn' %>
+        <% end %>
+        <% else %>
+      <% end %>
+    </div>
+
+
 <% if @users == nil %>
     <h1 style="margin-top: 100px">"お探しのユーザーは見つかりません。"</h1>
 <% else %>
-<div class="container" style="margin-top: 30px">
+<div class="container" style="margin-top: 80px">
     <% my_symptoms = current_user.symptoms %>
     <%= page_entries_info @users %>
      <div class="container-inner inner-default clearfix">
@@ -46,7 +60,5 @@
 <div>
      <%= link_to "戻る", session_path(current_user.id), method: :get, class: "btn btn-primary" %>
 </div>
-<div>
-    <%= render 'shared/btn' %>
-</div>
+
 

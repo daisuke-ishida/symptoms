@@ -27,18 +27,10 @@
                 </ul>
                 </li>
               <% else %>
-                <li><%= link_to "Log in", login_path %></li>
+                <li><%= link_to "ログイン", login_path %></li>
               <% end %>
             </ul>
             </div>
         </nav>
-    </div></br>
-   <div id="btn">
-      <% if logged_in? %>
-        <% if params[:controller] == 'sessions' && params[:action] == 'show' %>
-        <% else %>
-            <%= render 'shared/btn' %>
-        <% end %>
-      <% end %>
     </div>
 </header>

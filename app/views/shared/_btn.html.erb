@@ -1,7 +1,14 @@
+<div class="container">
+<div class="col-md-6"></div>
+<div class="col-md-6">
 <ul class="list-inline">
          <li class="list-group-item list-group-item-success"> <%= link_to "TOPへ", session_path(current_user.id) %></li>
      <% unless params[:action] == "search" %>
-         <li class="list-group-item list-group-item-success"> <%= link_to "", search_user_path(current_user.id)%></li>
+         <li class="list-group-item list-group-item-success"> <%= link_to "my症状", search_user_path(current_user.id)%></li>
+     <% end %>
+     
+     <% unless params[:action] == "startpickup" %>
+         <li class="list-group-item list-group-item-success"><%= link_to "他症状" , startpickup_path %></li>
      <% end %>
  
      <% unless params[:action] == "followings" %>   
@@ -20,6 +27,8 @@
          <li class="list-group-item list-group-item-success"> <%= link_to "お気に入られ",followed_post_path(current_user.id)%></li>
      <% end %>
 </ul>
+</div>
+</div>
 
 
  

@@ -54,7 +54,7 @@ class PostsController < ApplicationController
         end
     end
       
-      TIMEOUT = 60.minutes
+      TIMEOUT = 2.minutes
   
    def check_timeout
     if current_user

@@ -1,5 +1,17 @@
-<div class="container-fluid">
-<h3 class="page-header">お気に入りされた投稿</h3></br>
+ <div style="margin-top: 50px" id="btn">
+      <% if logged_in? %>
+        <% if params[:controller] == 'sessions' && params[:action] == 'show' %>
+        <% elsif params[:controller] == 'sessions' && params[:action] == 'create' %>
+        <% elsif params[:controller] == 'sessions' && params[:action] == 'new' %>
+        <% else %>
+            <%= render 'shared/btn' %>
+        <% end %>
+        <% else %>
+      <% end %>
+    </div>
+
+<div class="container-fluid" style="margin-top: 80px">
+<h3>お気に入りされた投稿</h3></br>
 <% Time.zone = 'Asia/Tokyo' %>
 <%= page_entries_info @faved_posts %>
 <ol>
